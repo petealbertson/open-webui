@@ -2,7 +2,7 @@
 	import { toast } from 'svelte-sonner';
 	import { tick, getContext, onMount } from 'svelte';
 
-	import { models, settings } from '$lib/stores';
+	import { models, mobile, settings } from '$lib/stores';
 	import { user as _user } from '$lib/stores';
 	import {
 		copyToClipboard as _copyToClipboard,
@@ -530,7 +530,7 @@
 							<button
 								class="{($settings?.highContrastMode ?? false)
 									? ''
-									: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition edit-user-message-button"
+									: 'invisible group-hover:visible'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition edit-user-message-button"
 								aria-label={$i18n.t('Edit')}
 								on:click={() => {
 									editMessageHandler();
@@ -542,7 +542,7 @@
 									viewBox="0 0 24 24"
 									stroke-width="2.3"
 									stroke="currentColor"
-									class="w-4 h-4"
+									class="{$mobile ? 'size-5' : 'w-4 h-4'}"
 								>
 									<path
 										stroke-linecap="round"
@@ -559,7 +559,7 @@
 							<button
 								class="{($settings?.highContrastMode ?? false)
 									? ''
-									: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
+									: 'invisible group-hover:visible'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
 								aria-label={$i18n.t('Copy')}
 								on:click={() => {
 									copyToClipboard(message.content);
@@ -571,7 +571,7 @@
 									viewBox="0 0 24 24"
 									stroke-width="2.3"
 									stroke="currentColor"
-									class="w-4 h-4"
+									class="{$mobile ? 'size-5' : 'w-4 h-4'}"
 								>
 									<path
 										stroke-linecap="round"
@@ -590,7 +590,7 @@
 									aria-label={$i18n.t('Delete')}
 									class="{($settings?.highContrastMode ?? false)
 										? ''
-										: 'invisible group-hover:visible'} p-1 rounded-sm dark:hover:text-white hover:text-black transition"
+										: 'invisible group-hover:visible'} {$mobile ? 'p-2' : 'p-1'} rounded-sm dark:hover:text-white hover:text-black transition"
 									on:click={(e) => {
 										if (e.shiftKey) {
 											deleteMessageHandler();
@@ -605,7 +605,7 @@
 										viewBox="0 0 24 24"
 										stroke-width="2"
 										stroke="currentColor"
-										class="w-4 h-4"
+										class="{$mobile ? 'size-5' : 'w-4 h-4'}"
 									>
 										<path
 											stroke-linecap="round"
