@@ -1,0 +1,9 @@
+# Slim image: reuse the running Open WebUI image, swap in our rebuilt frontend.
+FROM ghcr.io/open-webui/open-webui:main
+
+# Remove stale hashed assets from the base image, then copy the fresh build.
+RUN rm -rf /app/build
+
+COPY --chown=0:0 build /app/build
+
+ENV WEBUI_BUILD_HASH=mobile-ui-polish
