@@ -877,7 +877,7 @@
 							onMarkAllRead={markAllReadHandler}
 						>
 							<div
-								class="flex {$mobile ? 'size-8' : 'size-5'} items-center justify-center self-center dark:hover:text-white transition m-0 touch-auto"
+								class="flex {$mobile ? 'size-9' : 'size-5'} items-center justify-center self-center dark:hover:text-white transition m-0 touch-auto"
 							>
 								<MoreHorizontal className="size-3.5" strokeWidth="2" />
 							</div>

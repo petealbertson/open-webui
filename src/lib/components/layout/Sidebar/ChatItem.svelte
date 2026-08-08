@@ -718,12 +718,12 @@
 					>
 						<button
 							aria-label="Chat Menu"
-							class="flex {$mobile ? 'size-8' : 'size-5'} items-center justify-center self-center dark:hover:text-white transition m-0"
+							class="flex {$mobile ? 'size-9' : 'size-5'} items-center justify-center self-center dark:hover:text-white transition m-0"
 							on:click={() => {
 								dispatch('select');
 							}}
 						>
-							<MoreHorizontalIcon className="{mobile ? 'size-5' : 'size-3.5'}" strokeWidth="2" />
+							<MoreHorizontalIcon className="{mobile ? 'size-5.5' : 'size-3.5'}" strokeWidth="2" />
 						</button>
 					</ChatMenu>
 
