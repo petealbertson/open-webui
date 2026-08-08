@@ -590,7 +590,7 @@
 						<img
 							src="/api/v1/users/{ownerUserId}/profile/image"
 							alt=""
-							class="size-3.5 rounded-full shrink-0 object-cover mr-1.5"
+							class="{$mobile ? 'size-4.5' : 'size-3.5'} rounded-full shrink-0 object-cover mr-1.5"
 						/>
 					</Tooltip>
 				{/if}
@@ -620,7 +620,7 @@
 
 				<!-- Time ago indicator -->
 				{#if (updatedAt ?? createdAt) && !showInlineActions}
-					<div class="shrink-0 self-center text-[10px] text-gray-400 dark:text-gray-500 pl-2">
+					<div class="shrink-0 self-center {$mobile ? 'text-[11px]' : 'text-[10px]'} text-gray-400 dark:text-gray-500 pl-2">
 						{formatTimeAgo((updatedAt ?? createdAt) as number)}
 					</div>
 				{/if}
@@ -718,12 +718,12 @@
 					>
 						<button
 							aria-label="Chat Menu"
-							class="flex size-5 items-center justify-center self-center dark:hover:text-white transition m-0"
+							class="flex {$mobile ? 'size-7' : 'size-5'} items-center justify-center self-center dark:hover:text-white transition m-0"
 							on:click={() => {
 								dispatch('select');
 							}}
 						>
-							<MoreHorizontalIcon className="size-3.5" strokeWidth="2" />
+							<MoreHorizontalIcon className="{mobile ? 'size-4.5' : 'size-3.5'}" strokeWidth="2" />
 						</button>
 					</ChatMenu>
 
