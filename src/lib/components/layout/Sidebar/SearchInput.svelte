@@ -206,7 +206,7 @@
 
 		<input
 			id="search-input"
-			class="w-full rounded-r-xl {$mobile ? 'py-2' : 'py-1.5'} pl-2.5 text-sm bg-transparent dark:text-gray-300 outline-hidden"
+			class="w-full rounded-r-xl {$mobile ? 'py-2.5' : 'py-1.5'} pl-2.5 text-sm bg-transparent dark:text-gray-300 outline-hidden"
 			placeholder={placeholder ? placeholder : $i18n.t('Search')}
 			autocomplete="off"
 			maxlength="500"

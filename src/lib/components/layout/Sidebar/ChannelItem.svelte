@@ -77,7 +77,7 @@
 	class=" w-full {className} rounded-xl flex relative group hover:bg-gray-100 dark:hover:bg-gray-900 {$page
 		.url.pathname === `/channels/${channel.id}`
 		? 'bg-gray-100 dark:bg-gray-900 selected'
-		: ''} {channel?.type === 'dm' ? ($mobile ? 'px-2 py-2' : 'px-1 py-[3px]') : ($mobile ? 'p-2' : 'p-1')}  {channel?.unread_count > 0
+		: ''} {channel?.type === 'dm' ? ($mobile ? 'px-2.5 py-3' : 'px-1 py-[3px]') : ($mobile ? 'p-3' : 'p-1')}  {channel?.unread_count > 0
 		? 'font-normal dark:text-white text-black'
 		: ' dark:text-gray-400 text-gray-600'} cursor-pointer select-none"
 >
@@ -114,7 +114,7 @@
 								<img
 									src={`${WEBUI_API_BASE_URL}/users/${u.id}/profile/image`}
 									alt={u.name}
-									class=" {$mobile ? 'size-6.5' : 'size-5.5'} rounded-full border-2 border-white dark:border-gray-900 {index ===
+									class=" {$mobile ? 'size-7' : 'size-5.5'} rounded-full border-2 border-white dark:border-gray-900 {index ===
 									1
 										? '-ml-2.5'
 										: ''}"
@@ -156,11 +156,11 @@
 				class=" text-left self-center overflow-hidden w-full line-clamp-1 flex-1 pr-1 flex items-center gap-2.5"
 			>
 				{#if channel?.name}
-					<span class="line-clamp-1 {$mobile ? 'text-[14px]' : ''}">
+					<span class="line-clamp-1 {$mobile ? 'text-[15px]' : ''}">
 						{channel.name}
 					</span>
 				{:else}
-					<span class="shrink-0 line-clamp-1 {$mobile ? 'text-[14px]' : ''}">
+					<span class="shrink-0 line-clamp-1 {$mobile ? 'text-[15px]' : ''}">
 						{channel?.users
 							?.filter((u) => u.id !== $user?.id)
 							.map((u) => u.name)

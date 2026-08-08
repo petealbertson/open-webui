@@ -126,10 +126,10 @@
 
 		{#if collapsible}
 			<Collapsible bind:open className="w-full" buttonClassName="w-full" onChange={setOpen}>
-				<div class="flex items-center justify-between {mobile ? 'h-9' : 'h-6'} w-full pl-3.5 pr-1.5 shrink-0">
+				<div class="flex items-center justify-between {mobile ? 'h-11' : 'h-6'} w-full pl-3.5 pr-1.5 shrink-0">
 					<button
 						type="button"
-						class="group flex flex-1 h-full items-center gap-1 text-left {mobile ? 'text-[13px]' : 'text-xs'} text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400 transition-colors duration-100 {buttonClassName}"
+						class="group flex flex-1 h-full items-center gap-1 text-left {mobile ? 'text-[14px]' : 'text-xs'} text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400 transition-colors duration-100 {buttonClassName}"
 						aria-expanded={open}
 						aria-controls="{id}-content"
 						on:pointerup|stopPropagation
@@ -149,7 +149,7 @@
 					{#if onAdd}
 						<button
 							type="button"
-							class="flex items-center justify-center {mobile ? 'size-8' : 'w-7 h-7'} rounded-lg text-gray-300 hover:text-gray-500 dark:text-gray-600 dark:hover:text-gray-400 transition-colors duration-100"
+							class="flex items-center justify-center {mobile ? 'size-9' : 'w-7 h-7'} rounded-lg text-gray-300 hover:text-gray-500 dark:text-gray-600 dark:hover:text-gray-400 transition-colors duration-100"
 							aria-label={onAddLabel}
 							on:pointerup={(e) => {
 								e.stopPropagation();
@@ -160,7 +160,7 @@
 							}}
 						>
 							<Tooltip content={onAddLabel}>
-								<Plus className="{mobile ? 'size-4' : 'size-3.5'}" />
+								<Plus className="{mobile ? 'size-4.5' : 'size-3.5'}" />
 							</Tooltip>
 						</button>
 					{/if}

@@ -606,7 +606,7 @@
 
 				{#each actions as action, idx (action.label)}
 					<button
-						class="w-full flex items-center rounded-lg {$mobile ? 'text-[15px] py-2.5 px-3' : 'text-sm py-1.5 px-2.5'} hover:bg-gray-50/70 dark:hover:bg-gray-850/50 {selectedIdx ===
+						class="w-full flex items-center rounded-lg {$mobile ? 'text-[15px] py-3 px-3' : 'text-sm py-1.5 px-2.5'} hover:bg-gray-50/70 dark:hover:bg-gray-850/50 {selectedIdx ===
 						idx
 							? 'bg-gray-50/70 dark:bg-gray-850/50'
 							: ''}"
@@ -670,7 +670,7 @@
 
 						<!-- svelte-ignore a11y-no-static-element-interactions -->
 						<div
-							class="w-full flex justify-between items-center rounded-lg {$mobile ? 'text-[15px] py-2.5 pl-3' : 'text-sm py-1.5 pl-2.5'} pr-32 hover:bg-gray-50/70 dark:hover:bg-gray-850/50 group/item relative {selectedIdx ===
+							class="w-full flex justify-between items-center rounded-lg {$mobile ? 'text-[15px] py-3 pl-3' : 'text-sm py-1.5 pl-2.5'} pr-32 hover:bg-gray-50/70 dark:hover:bg-gray-850/50 group/item relative {selectedIdx ===
 							idx + actions.length
 								? 'bg-gray-50/70 dark:bg-gray-850/50'
 								: ''}"

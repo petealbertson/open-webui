@@ -926,15 +926,15 @@ html.high-contrast:not(.dark) .shimmer {
 @media (max-width: 767px) {
 	/* Chat list rows: taller, more padding, larger title text */
 	#sidebar-chat-item {
-		min-height: calc(46px * var(--app-text-scale, 1));
-		padding-inline: calc(13px * var(--app-text-scale, 1));
-		padding-block: calc(11px * var(--app-text-scale, 1));
+		min-height: calc(52px * var(--app-text-scale, 1));
+		padding-inline: calc(14px * var(--app-text-scale, 1));
+		padding-block: calc(13px * var(--app-text-scale, 1));
 	}
 
 	#sidebar-chat-item div[dir='auto'] {
-		height: calc(24px * var(--app-text-scale, 1));
-		line-height: calc(24px * var(--app-text-scale, 1));
-		font-size: calc(14px * var(--app-text-scale, 1));
+		height: calc(26px * var(--app-text-scale, 1));
+		line-height: calc(26px * var(--app-text-scale, 1));
+		font-size: calc(15px * var(--app-text-scale, 1));
 	}
 
 	#sidebar-chat-item input {
