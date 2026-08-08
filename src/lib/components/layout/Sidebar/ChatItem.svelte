@@ -503,7 +503,7 @@
 	{#if confirmEdit}
 		<div
 			id="sidebar-chat-item"
-			class=" w-full flex justify-between rounded-xl px-2 py-[6px] {id === $chatId || confirmEdit
+			class=" w-full flex justify-between rounded-xl {$mobile ? 'px-3 py-2.5' : 'px-2 py-[6px]'} {id === $chatId || confirmEdit
 				? ($settings?.highContrastMode ?? false)
 					? 'bg-black/[0.035] dark:bg-white/[0.06] selected'
 					: 'bg-black/[0.035] dark:bg-white/[0.045] selected'
@@ -548,7 +548,7 @@
 		>
 			<LinkPreview.Trigger
 				id="sidebar-chat-item"
-				class=" w-full flex justify-between rounded-xl px-2 py-[6px] {id === $chatId || confirmEdit
+				class=" w-full flex justify-between rounded-xl {$mobile ? 'px-3 py-2.5' : 'px-2 py-[6px]'} {id === $chatId || confirmEdit
 					? ($settings?.highContrastMode ?? false)
 						? 'bg-black/[0.035] dark:bg-white/[0.06] selected'
 						: 'bg-black/[0.035] dark:bg-white/[0.045] selected'
@@ -610,7 +610,7 @@
 					{/if}
 					<div
 						dir="auto"
-						class="text-left self-center overflow-hidden w-full h-[20px] truncate {unread
+						class="text-left self-center overflow-hidden w-full {$mobile ? 'h-[24px] text-[14px] leading-6' : 'h-[20px]'} truncate {unread
 							? 'font-normal text-gray-800 dark:text-gray-200'
 							: ''} {showInlineActions && !readonly ? 'pr-12' : ''}"
 					>

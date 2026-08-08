@@ -104,8 +104,8 @@
 								}}
 								aria-label={$showSidebar ? $i18n.t('Close Sidebar') : $i18n.t('Open Sidebar')}
 							>
-								<div class="self-center p-1.5">
-									<Sidebar className="size-4" />
+								<div class="self-center {mobile ? 'p-2' : 'p-1.5'}">
+									<Sidebar className="{mobile ? 'size-5' : 'size-4'}" />
 								</div>
 							</button>
 						</Tooltip>
