@@ -1,6 +1,8 @@
 import { beforeEach, describe, expect, it } from 'vitest';
+import { get } from 'svelte/store';
 import {
 	eventToChord,
+	keybindings,
 	loadKeybindings,
 	matchKeybinding,
 	resetKeybindings,
@@ -39,5 +41,28 @@ describe('shortcuts', () => {
 		expect(matchKeybinding(key('k', { ctrlKey: true }))).toBeNull();
 		expect(matchKeybinding(key('p', { ctrlKey: true, shiftKey: true }))).toBe(Shortcut.SEARCH);
 		expect(matchKeybinding(key('o', { ctrlKey: true, shiftKey: true }))).toBeNull();
+	});
+
+	it('never matches browser-reserved reload chords', () => {
+		// REGENERATE_RESPONSE is unassigned by default in this fork, but even
+		// if a saved/loaded binding claims Cmd+R, the app must not match it.
+		loadKeybindings({
+			[Shortcut.REGENERATE_RESPONSE]: 'Cmd+R'
+		});
+
+		expect(matchKeybinding(key('r', { metaKey: true }))).toBeNull();
+		expect(matchKeybinding(key('r', { metaKey: true, shiftKey: true }))).toBeNull();
+		expect(matchKeybinding(key('r', { ctrlKey: true }))).toBeNull();
+		expect(matchKeybinding(key('r', { ctrlKey: true, shiftKey: true }))).toBeNull();
+	});
+
+	it('loadKeybindings strips saved browser-reserved chords', () => {
+		loadKeybindings({
+			[Shortcut.REGENERATE_RESPONSE]: 'Cmd+Shift+R',
+			[Shortcut.SEARCH]: 'Cmd+R'
+		});
+
+		expect(get(keybindings)[Shortcut.REGENERATE_RESPONSE]).toBe('');
+		expect(get(keybindings)[Shortcut.SEARCH]).toBe('');
 	});
 });

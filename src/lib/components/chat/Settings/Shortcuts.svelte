@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { getContext, onMount } from 'svelte';
+	import { toast } from 'svelte-sonner';
 	import type { Writable } from 'svelte/store';
 	import { updateUserSettings } from '$lib/apis/users';
 	import {
 		DEFAULT_KEYBINDINGS,
 		eventToChord,
 		formatChord,
+		isBrowserReservedChord,
 		isConfigurableShortcut,
 		keybindings,
 		resetKeybindings,
@@ -95,6 +97,13 @@
 
 		const chord = eventToChord(event);
 		if (!chord) return;
+
+		if (isBrowserReservedChord(chord)) {
+			// The browser uses this combination (e.g. reload); never let it be
+			// assigned to an app action.
+			toast.error($i18n.t('This key combination is reserved by the browser.'));
+			return;
+		}
 
 		await setBinding(recordingShortcut, chord);
 		recordingShortcut = null;
