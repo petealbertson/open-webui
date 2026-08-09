@@ -1824,12 +1824,21 @@ class ChatTable:
             bind = await session.connection()
             dialect_name = bind.dialect.name
             if dialect_name == 'sqlite':
-                # SQLite case: using JSON1 extension for JSON searching
+                # SQLite case: using JSON1 extension for JSON searching.
+                # Chat content lives in the full history (history.messages) for
+                # chats with branching/history tracking, while 'messages' holds a
+                # compact summary of the current thread. Search both so that
+                # full-text search finds matches anywhere in the conversation.
                 sqlite_content_sql = (
                     'EXISTS ('
                     '    SELECT 1 '
                     "    FROM json_each(Chat.chat, '$.messages') AS message "
                     "    WHERE LOWER(message.value->>'content') LIKE '%' || :content_key || '%'"
+                    ')'
+                    ' OR EXISTS ('
+                    '    SELECT 1 '
+                    "    FROM json_each(Chat.chat, '$.history.messages') AS history_message "
+                    "    WHERE LOWER(history_message.value->>'content') LIKE '%' || :content_key || '%'"
                     ')'
                 )
                 sqlite_content_clause = text(sqlite_content_sql)
