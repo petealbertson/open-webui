@@ -6,4 +6,6 @@ RUN rm -rf /app/build
 
 COPY --chown=0:0 build /app/build
 
-ENV WEBUI_BUILD_HASH=mobile-ui-polish
+# Cosmetic build label shown in the startup banner / About tooltip.
+ARG WEBUI_BUILD_HASH=open-webui-mobile
+ENV WEBUI_BUILD_HASH=${WEBUI_BUILD_HASH}
