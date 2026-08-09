@@ -270,7 +270,7 @@
 						<textarea
 							id="message-edit-{message.id}"
 							bind:this={messageEditTextAreaElement}
-							class=" bg-transparent outline-hidden w-full resize-none text-[0.9375rem]"
+							class="input-plain  bg-transparent outline-hidden w-full resize-none text-[0.9375rem]"
 							bind:value={editedContent}
 							on:input={(e) => {
 								const messagesContainer = document.getElementById('messages-container');
@@ -478,7 +478,7 @@
 													messageIndexEdit = false;
 												}
 											}}
-											class="bg-transparent font-normal self-center dark:text-gray-100 min-w-fit outline-hidden"
+											class="input-plain bg-transparent font-normal self-center dark:text-gray-100 min-w-fit outline-hidden"
 										/>/{siblings.length}
 									</div>
 								{:else}
@@ -667,7 +667,7 @@
 													messageIndexEdit = false;
 												}
 											}}
-											class="bg-transparent font-normal self-center dark:text-gray-100 min-w-fit outline-hidden"
+											class="input-plain bg-transparent font-normal self-center dark:text-gray-100 min-w-fit outline-hidden"
 										/>/{siblings.length}
 									</div>
 								{:else}

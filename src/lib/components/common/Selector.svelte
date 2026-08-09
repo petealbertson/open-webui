@@ -53,7 +53,7 @@
 
 					<input
 						bind:value={searchValue}
-						class="w-full text-sm bg-transparent outline-hidden"
+						class="input-plain w-full text-sm bg-transparent outline-hidden"
 						placeholder={searchPlaceholder}
 						on:click|stopPropagation
 					/>

@@ -1251,7 +1251,7 @@
 						<div class="w-full flex justify-between items-center">
 							<input
 								type="text"
-								class="text-left w-full text-sm bg-transparent outline-hidden flex-1"
+								class="input-plain text-left w-full text-sm bg-transparent outline-hidden flex-1"
 								bind:value={knowledge.name}
 								aria-label={$i18n.t('Knowledge Name')}
 								placeholder={$i18n.t('Knowledge Name')}
@@ -1291,7 +1291,7 @@
 					<div class="flex w-full items-center">
 						<input
 							type="text"
-							class="text-left text-xs w-full text-gray-500 bg-transparent outline-hidden flex-1"
+							class="input-plain text-left text-xs w-full text-gray-500 bg-transparent outline-hidden flex-1"
 							bind:value={knowledge.description}
 							aria-label={$i18n.t('Knowledge Description')}
 							placeholder={$i18n.t('Knowledge Description')}
@@ -1393,12 +1393,12 @@
 				</div>
 			{:else}
 				<div class="px-3 flex flex-1 items-center w-full space-x-1.5">
-					<div class="flex flex-1 items-center">
+					<div class="flex flex-1 items-center rounded-lg border border-gray-200 bg-gray-50/60 dark:border-gray-700 dark:bg-gray-900">
 						<div class=" self-center ml-1 mr-2">
 							<Search className="size-3.5" />
 						</div>
 						<input
-							class=" w-full text-xs pr-4 py-1 rounded-r-xl outline-hidden bg-transparent"
+							class="input-plain  w-full text-xs pr-4 py-1 rounded-r-xl outline-hidden bg-transparent"
 							bind:value={query}
 							on:input={handleSearchInput}
 							aria-label={$i18n.t('Search Collection')}

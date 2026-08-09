@@ -357,7 +357,7 @@
 			</span>
 
 			<div
-				class="hidden lg:flex items-center gap-1.5 h-7 px-2 lg:w-full shrink-0 rounded-lg text-xs bg-gray-50/70 dark:bg-white/[0.03] mb-2"
+				class="hidden lg:flex items-center gap-1.5 h-7 px-2 lg:w-full shrink-0 rounded-lg border border-gray-200 text-xs bg-gray-50/70 dark:border-gray-700 dark:bg-white/[0.03] mb-2"
 				id="settings-search"
 			>
 				<div class="self-center rounded-l-xl bg-transparent">
@@ -365,7 +365,7 @@
 				</div>
 				<label class="sr-only" for="search-input-admin-settings">{$i18n.t('Search')}</label>
 				<input
-					class="w-full py-1 text-xs bg-transparent dark:text-gray-300 outline-hidden"
+					class="input-plain w-full py-1 text-xs bg-transparent dark:text-gray-300 outline-hidden"
 					bind:value={search}
 					id="search-input-admin-settings"
 					on:input={searchDebounceHandler}

@@ -1037,7 +1037,7 @@ ${content}
 							{/if}
 
 							<input
-								class="w-full text-sm font-normal bg-transparent outline-hidden {$mobile
+								class="input-plain w-full text-sm font-normal bg-transparent outline-hidden {$mobile
 									? 'ml-1'
 									: ''}"
 								type="text"

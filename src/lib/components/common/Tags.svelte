@@ -90,7 +90,7 @@
 			<input
 				bind:this={inputElement}
 				bind:value={inputValue}
-				class="w-full {tags.length > 0
+				class="input-plain w-full {tags.length > 0
 					? 'px-0.5'
 					: ''} text-xs bg-transparent outline-hidden placeholder:text-gray-400 dark:placeholder:text-gray-500"
 				placeholder={$i18n.t('Add a tag...')}

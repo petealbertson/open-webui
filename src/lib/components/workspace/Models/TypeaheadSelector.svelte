@@ -86,7 +86,7 @@
 							bind:this={inputElement}
 							bind:value
 							id={`${id}-input`}
-							class="w-full bg-transparent py-0.5 text-[13px] outline-hidden"
+							class="input-plain w-full bg-transparent py-0.5 text-[13px] outline-hidden"
 							type="text"
 							{placeholder}
 							autocomplete="off"

@@ -657,7 +657,7 @@
 									<div class="min-w-0 flex-1">
 										<div class="flex min-w-0 items-center gap-2">
 											<input
-												class="min-w-0 flex-1 bg-transparent text-base leading-tight text-gray-900 outline-hidden placeholder:text-gray-300 dark:text-white dark:placeholder:text-gray-700 md:text-lg"
+												class="input-plain min-w-0 flex-1 bg-transparent text-base leading-tight text-gray-900 outline-hidden placeholder:text-gray-300 dark:text-white dark:placeholder:text-gray-700 md:text-lg"
 												placeholder={$i18n.t('Model Name')}
 												bind:value={name}
 												required
@@ -671,7 +671,7 @@
 										</div>
 
 										<input
-											class="block w-full bg-transparent py-0.5 text-xs text-gray-500 outline-hidden placeholder:text-gray-300 dark:text-gray-500 dark:placeholder:text-gray-700"
+											class="input-plain block w-full bg-transparent py-0.5 text-xs text-gray-500 outline-hidden placeholder:text-gray-300 dark:text-gray-500 dark:placeholder:text-gray-700"
 											placeholder={$i18n.t('Model ID')}
 											bind:value={id}
 											disabled={edit}
@@ -1037,7 +1037,7 @@
 							{#if showPreview}
 								<div>
 									<textarea
-										class="text-sm w-full bg-transparent outline-hidden resize-none"
+										class="input-plain text-sm w-full bg-transparent outline-hidden resize-none"
 										rows="10"
 										value={JSON.stringify(info, null, 2)}
 										disabled

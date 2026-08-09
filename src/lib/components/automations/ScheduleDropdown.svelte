@@ -200,7 +200,7 @@
 
 		<div class="px-1.5 py-0.5">
 			<select
-				class="w-full h-[1.6875rem] bg-transparent rounded-xl text-[13px] px-1.5 outline-hidden"
+				class="input-plain w-full h-[1.6875rem] bg-transparent rounded-xl text-[13px] px-1.5 outline-hidden"
 				bind:value={frequency}
 				on:click={(e) => e.stopPropagation()}
 				on:change={onChange}
@@ -217,7 +217,7 @@
 					type="text"
 					bind:value={customRrule}
 					placeholder="RRULE:FREQ=DAILY;BYHOUR=9;BYMINUTE=0"
-					class="w-full bg-transparent outline-hidden text-[13px] placeholder:text-gray-400 dark:placeholder:text-gray-600"
+					class="input-plain w-full bg-transparent outline-hidden text-[13px] placeholder:text-gray-400 dark:placeholder:text-gray-600"
 					on:click={(e) => e.stopPropagation()}
 					on:input={onChange}
 				/>
@@ -230,7 +230,7 @@
 							type="date"
 							bind:value={onceDate}
 							min={new Date().toISOString().split('T')[0]}
-							class="bg-transparent outline-hidden text-xs dark:scheme-dark"
+							class="input-plain bg-transparent outline-hidden text-xs dark:scheme-dark"
 							on:click={(e) => e.stopPropagation()}
 							on:input={onChange}
 						/>
@@ -239,7 +239,7 @@
 						<input
 							type="time"
 							bind:value={onceTime}
-							class="bg-transparent outline-hidden text-xs dark:scheme-dark"
+							class="input-plain bg-transparent outline-hidden text-xs dark:scheme-dark"
 							on:click={(e) => e.stopPropagation()}
 							on:input={onChange}
 						/>

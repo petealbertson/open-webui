@@ -341,7 +341,7 @@
 				<div class="text-gray-500 text-xs">{$i18n.t('Commit Message')} ({$i18n.t('optional')})</div>
 				<div class="mt-1">
 					<input
-						class="w-full bg-transparent text-xs outline-hidden"
+						class="input-plain w-full bg-transparent text-xs outline-hidden"
 						placeholder={$i18n.t('Describe what changed...')}
 						aria-label={$i18n.t('Commit Message')}
 						bind:value={commitMessage}
@@ -398,7 +398,7 @@
 		<div class="flex shrink-0 items-start justify-between gap-3 pb-1">
 			<div class="min-w-0 flex-1">
 				<input
-					class="w-full bg-transparent text-sm outline-hidden"
+					class="input-plain w-full bg-transparent text-sm outline-hidden"
 					placeholder={$i18n.t('Prompt Name')}
 					bind:value={name}
 					on:input={debouncedSaveMetadata}
@@ -409,7 +409,7 @@
 					<div class="flex min-w-0 flex-1 items-center gap-0.5">
 						<span>/</span>
 						<input
-							class="min-w-0 flex-1 bg-transparent outline-hidden"
+							class="input-plain min-w-0 flex-1 bg-transparent outline-hidden"
 							placeholder={$i18n.t('command')}
 							bind:value={command}
 							on:input={debouncedSaveMetadata}
@@ -570,7 +570,7 @@
 					<div class="flex flex-col w-full">
 						<div class="flex items-center">
 							<input
-								class="w-full bg-transparent text-sm outline-hidden"
+								class="input-plain w-full bg-transparent text-sm outline-hidden"
 								placeholder={$i18n.t('Name')}
 								bind:value={name}
 								required

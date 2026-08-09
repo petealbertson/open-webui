@@ -76,7 +76,7 @@
 			<Search className="size-3.5" strokeWidth="2.5" />
 			<input
 				bind:value={modelSearch}
-				class="w-full text-[13px] bg-transparent outline-hidden"
+				class="input-plain w-full text-[13px] bg-transparent outline-hidden"
 				placeholder={$i18n.t('Search a model')}
 				autocomplete="off"
 				on:click={(e) => e.stopPropagation()}

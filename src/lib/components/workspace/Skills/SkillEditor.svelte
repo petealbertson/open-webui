@@ -114,7 +114,7 @@
 			<div class="min-w-0 flex-1">
 				<Tooltip content={$i18n.t('e.g. Code Review Guidelines')} placement="top-start">
 					<input
-						class="w-full bg-transparent text-sm outline-hidden"
+						class="input-plain w-full bg-transparent text-sm outline-hidden"
 						type="text"
 						placeholder={$i18n.t('Skill Name')}
 						aria-label={$i18n.t('Skill Name')}
@@ -136,7 +136,7 @@
 							placement="top-start"
 						>
 							<input
-								class="w-full bg-transparent font-mono outline-hidden disabled:text-gray-500"
+								class="input-plain w-full bg-transparent font-mono outline-hidden disabled:text-gray-500"
 								type="text"
 								placeholder={$i18n.t('Skill ID')}
 								aria-label={$i18n.t('Skill ID')}
@@ -153,7 +153,7 @@
 						placement="top-start"
 					>
 						<input
-							class="w-full bg-transparent outline-hidden"
+							class="input-plain w-full bg-transparent outline-hidden"
 							type="text"
 							placeholder={$i18n.t('Skill Description')}
 							aria-label={$i18n.t('Skill Description')}
@@ -182,7 +182,7 @@
 				</div>
 			{:else}
 				<textarea
-					class="h-full w-full resize-none bg-transparent px-3 py-2 font-mono text-[11px] leading-relaxed outline-hidden placeholder:text-gray-400 dark:placeholder:text-gray-600"
+					class="input-plain h-full w-full resize-none bg-transparent px-3 py-2 font-mono text-[11px] leading-relaxed outline-hidden placeholder:text-gray-400 dark:placeholder:text-gray-600"
 					bind:value={content}
 					on:input={handleContentInput}
 					placeholder={$i18n.t('Enter skill instructions in markdown...')}
