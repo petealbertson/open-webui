@@ -317,23 +317,21 @@ input[type='number'] {
    across admin/chat settings.
    ============================================================ */
 @layer base {
-	:where(
-		input:not([type]),
-		input[type='text'],
-		input[type='email'],
-		input[type='url'],
-		input[type='password'],
-		input[type='search'],
-		input[type='tel'],
-		input[type='number'],
-		input[type='date'],
-		input[type='datetime-local'],
-		input[type='month'],
-		input[type='week'],
-		input[type='time'],
-		textarea,
-		select
-	) {
+	input:not([type]),
+	input[type='text'],
+	input[type='email'],
+	input[type='url'],
+	input[type='password'],
+	input[type='search'],
+	input[type='tel'],
+	input[type='number'],
+	input[type='date'],
+	input[type='datetime-local'],
+	input[type='month'],
+	input[type='week'],
+	input[type='time'],
+	textarea,
+	select {
 		border-radius: 0.5rem;
 		border-width: 1px;
 		border-style: solid;
@@ -346,66 +344,32 @@ input[type='number'] {
 			box-shadow 120ms ease;
 	}
 
-	:where(
-		input:not([type]),
-		input[type='text'],
-		input[type='email'],
-		input[type='url'],
-		input[type='password'],
-		input[type='search'],
-		input[type='tel'],
-		input[type='number'],
-		input[type='date'],
-		input[type='datetime-local'],
-		input[type='month'],
-		input[type='week'],
-		input[type='time'],
-		textarea,
-		select
-	):focus {
+	:is(input:not([type]), input[type='text'], input[type='email'], input[type='url'], input[type='password'], input[type='search'], input[type='tel'], input[type='number'], input[type='date'], input[type='datetime-local'], input[type='month'], input[type='week'], input[type='time'], textarea, select):focus {
 		outline: none;
 		border-color: theme(--color-blue-500);
 		box-shadow: 0 0 0 3px theme(--color-blue-500 / 20%);
 	}
 
-	:where(.dark) :where(
-		input:not([type]),
-		input[type='text'],
-		input[type='email'],
-		input[type='url'],
-		input[type='password'],
-		input[type='search'],
-		input[type='tel'],
-		input[type='number'],
-		input[type='date'],
-		input[type='datetime-local'],
-		input[type='month'],
-		input[type='week'],
-		input[type='time'],
-		textarea,
-		select
-	) {
+	.dark input:not([type]),
+	.dark input[type='text'],
+	.dark input[type='email'],
+	.dark input[type='url'],
+	.dark input[type='password'],
+	.dark input[type='search'],
+	.dark input[type='tel'],
+	.dark input[type='number'],
+	.dark input[type='date'],
+	.dark input[type='datetime-local'],
+	.dark input[type='month'],
+	.dark input[type='week'],
+	.dark input[type='time'],
+	.dark textarea,
+	.dark select {
 		border-color: theme(--color-gray-700);
 		background-color: theme(--color-gray-900);
 	}
 
-	:where(.dark) :where(
-		input:not([type]),
-		input[type='text'],
-		input[type='email'],
-		input[type='url'],
-		input[type='password'],
-		input[type='search'],
-		input[type='tel'],
-		input[type='number'],
-		input[type='date'],
-		input[type='datetime-local'],
-		input[type='month'],
-		input[type='week'],
-		input[type='time'],
-		textarea,
-		select
-	):focus {
+	.dark :is(input:not([type]), input[type='text'], input[type='email'], input[type='url'], input[type='password'], input[type='search'], input[type='tel'], input[type='number'], input[type='date'], input[type='datetime-local'], input[type='month'], input[type='week'], input[type='time'], textarea, select):focus {
 		border-color: theme(--color-blue-500);
 		box-shadow: 0 0 0 3px theme(--color-blue-500 / 25%);
 	}
@@ -413,7 +377,7 @@ input[type='number'] {
 
 /* Fields inside an already-framed container, inline-edit/title fields and
    other intentional border-less inputs keep their existing look. */
-@layer base {
+@layer utilities {
 	:where(input, textarea, select):where(
 		.input-plain,
 		#chat-search input,
