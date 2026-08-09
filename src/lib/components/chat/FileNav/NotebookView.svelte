@@ -280,7 +280,7 @@
 			{#if cell.cell_type === 'markdown'}
 				{#if editingCell[i]}
 					<textarea
-						class="nb-edit-textarea text-sm"
+						class="input-plain nb-edit-textarea text-sm"
 						bind:value={editedSources[i]}
 						on:input={autoResize}
 						on:blur={() => cancelEditing(i)}

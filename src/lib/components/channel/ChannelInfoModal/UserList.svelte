@@ -125,7 +125,7 @@
 		{#if search}
 			<div class="flex gap-1 px-1 mb-1">
 				<div class=" flex w-full space-x-2">
-					<div class="flex flex-1 items-center">
+					<div class="flex flex-1 items-center rounded-lg border border-gray-200 bg-gray-50/60 dark:border-gray-700 dark:bg-gray-900">
 						<div class=" self-center ml-1 mr-3">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -141,7 +141,7 @@
 							</svg>
 						</div>
 						<input
-							class=" w-full text-sm pr-4 py-1 rounded-r-xl outline-hidden bg-transparent"
+							class="input-plain w-full text-sm pr-4 py-1 rounded-r-xl outline-hidden bg-transparent"
 							bind:value={query}
 							on:input={handleSearchInput}
 							placeholder={$i18n.t('Search')}

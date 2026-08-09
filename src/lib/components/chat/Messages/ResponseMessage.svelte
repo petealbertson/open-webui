@@ -17,6 +17,7 @@
 	import {
 		audioQueue,
 		config,
+		mobile,
 		models,
 		settings,
 		temporaryChatEnabled,
@@ -742,7 +743,7 @@
 									<textarea
 										id="message-edit-{message.id}"
 										bind:this={editTextAreaElement}
-										class=" bg-transparent outline-hidden w-full resize-none text-[0.9375rem]"
+										class="input-plain  bg-transparent outline-hidden w-full resize-none text-[0.9375rem]"
 										bind:value={editedContent}
 										on:input={(e) => {
 											const messagesContainer = document.getElementById('messages-container');
@@ -921,7 +922,7 @@
 								<div class="flex self-center min-w-fit" dir="ltr">
 									<button
 										aria-label={$i18n.t('Previous message')}
-										class="self-center p-1 hover:bg-black/5 dark:hover:bg-white/5 dark:hover:text-white hover:text-black rounded-md transition"
+										class="self-center {$mobile ? 'p-2' : 'p-1'} hover:bg-black/5 dark:hover:bg-white/5 dark:hover:text-white hover:text-black rounded-md transition"
 										on:click={() => {
 											showPreviousMessage(message);
 										}}
@@ -933,7 +934,7 @@
 											viewBox="0 0 24 24"
 											stroke="currentColor"
 											stroke-width="2.5"
-											class="size-3.5"
+											class="{$mobile ? 'size-4.5' : 'size-3.5'}"
 										>
 											<path
 												stroke-linecap="round"
@@ -966,7 +967,7 @@
 														messageIndexEdit = false;
 													}
 												}}
-												class="bg-transparent font-normal self-center dark:text-gray-100 min-w-fit outline-hidden"
+												class="input-plain bg-transparent font-normal self-center dark:text-gray-100 min-w-fit outline-hidden"
 											/>/{siblings.length}
 										</div>
 									{:else}
@@ -989,7 +990,7 @@
 									{/if}
 
 									<button
-										class="self-center p-1 hover:bg-black/5 dark:hover:bg-white/5 dark:hover:text-white hover:text-black rounded-md transition"
+										class="self-center {$mobile ? 'p-2' : 'p-1'} hover:bg-black/5 dark:hover:bg-white/5 dark:hover:text-white hover:text-black rounded-md transition"
 										on:click={() => {
 											showNextMessage(message);
 										}}
@@ -1002,7 +1003,7 @@
 											viewBox="0 0 24 24"
 											stroke="currentColor"
 											stroke-width="2.5"
-											class="size-3.5"
+											class="{$mobile ? 'size-4.5' : 'size-3.5'}"
 										>
 											<path
 												stroke-linecap="round"
@@ -1022,7 +1023,7 @@
 												aria-label={$i18n.t('Edit')}
 												class="{isLastMessage || ($settings?.highContrastMode ?? false)
 													? 'visible'
-													: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
+													: 'invisible group-hover:visible'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
 												on:click={() => {
 													editMessageHandler();
 												}}
@@ -1034,7 +1035,7 @@
 													stroke-width="2.3"
 													aria-hidden="true"
 													stroke="currentColor"
-													class="w-4 h-4"
+													class="{$mobile ? 'size-5' : 'w-4 h-4'}"
 												>
 													<path
 														stroke-linecap="round"
@@ -1052,7 +1053,7 @@
 										aria-label={$i18n.t('Copy')}
 										class="{isLastMessage || ($settings?.highContrastMode ?? false)
 											? 'visible'
-											: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition copy-response-button"
+											: 'invisible group-hover:visible'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition copy-response-button"
 										on:click={() => {
 											copyToClipboard(visibleResponseContent);
 										}}
@@ -1064,7 +1065,7 @@
 											viewBox="0 0 24 24"
 											stroke-width="2.3"
 											stroke="currentColor"
-											class="w-4 h-4"
+											class="{$mobile ? 'size-5' : 'w-4 h-4'}"
 										>
 											<path
 												stroke-linecap="round"
@@ -1081,7 +1082,7 @@
 											aria-label={$i18n.t('Insert into note')}
 											class="{isLastMessage || ($settings?.highContrastMode ?? false)
 												? 'visible'
-												: 'invisible group-hover:visible'} rounded-lg px-2 py-1.5 text-xs text-gray-500 transition hover:bg-black/5 hover:text-black dark:hover:bg-white/5 dark:hover:text-white"
+												: 'invisible group-hover:visible'} rounded-lg {$mobile ? 'px-2.5 py-2 text-sm' : 'px-2 py-1.5 text-xs'} text-gray-500 transition hover:bg-black/5 hover:text-black dark:hover:bg-white/5 dark:hover:text-white"
 											on:click={() => {
 												onInsertToNote?.(visibleResponseContent);
 											}}
@@ -1098,7 +1099,7 @@
 											id="speak-button-{message.id}"
 											class="{isLastMessage || ($settings?.highContrastMode ?? false)
 												? 'visible'
-												: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
+												: 'invisible group-hover:visible'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
 											on:click={() => {
 												if (!loadingSpeech) {
 													if (speaking) {
@@ -1111,7 +1112,7 @@
 										>
 											{#if loadingSpeech}
 												<svg
-													class=" w-4 h-4"
+													class="{$mobile ? 'size-5' : 'w-4 h-4'}"
 													fill="currentColor"
 													viewBox="0 0 24 24"
 													aria-hidden="true"
@@ -1150,7 +1151,7 @@
 													aria-hidden="true"
 													stroke-width="2.3"
 													stroke="currentColor"
-													class="w-4 h-4"
+													class="{$mobile ? 'size-5' : 'w-4 h-4'}"
 												>
 													<path
 														stroke-linecap="round"
@@ -1166,7 +1167,7 @@
 													aria-hidden="true"
 													stroke-width="2.3"
 													stroke="currentColor"
-													class="w-4 h-4"
+													class="{$mobile ? 'size-5' : 'w-4 h-4'}"
 												>
 													<path
 														stroke-linecap="round"
@@ -1198,7 +1199,7 @@
 											aria-hidden="true"
 											class=" {isLastMessage || ($settings?.highContrastMode ?? false)
 												? 'visible'
-												: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition whitespace-pre-wrap"
+												: 'invisible group-hover:visible'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition whitespace-pre-wrap"
 											on:click={() => {
 												console.log(message);
 											}}
@@ -1211,7 +1212,7 @@
 												viewBox="0 0 24 24"
 												stroke-width="2.3"
 												stroke="currentColor"
-												class="w-4 h-4"
+												class="{$mobile ? 'size-5' : 'w-4 h-4'}"
 											>
 												<path
 													stroke-linecap="round"
@@ -1230,7 +1231,7 @@
 												aria-label={$i18n.t('Good Response')}
 												class="{isLastMessage || ($settings?.highContrastMode ?? false)
 													? 'visible'
-													: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg {(
+													: 'invisible group-hover:visible'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg {(
 													message?.annotation?.rating ?? ''
 												).toString() === '1'
 													? 'bg-gray-100 dark:bg-gray-800'
@@ -1253,7 +1254,7 @@
 													viewBox="0 0 24 24"
 													stroke-linecap="round"
 													stroke-linejoin="round"
-													class="w-4 h-4"
+													class="{$mobile ? 'size-5' : 'w-4 h-4'}"
 													xmlns="http://www.w3.org/2000/svg"
 												>
 													<path
@@ -1268,7 +1269,7 @@
 												aria-label={$i18n.t('Bad Response')}
 												class="{isLastMessage || ($settings?.highContrastMode ?? false)
 													? 'visible'
-													: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg {(
+													: 'invisible group-hover:visible'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg {(
 													message?.annotation?.rating ?? ''
 												).toString() === '-1'
 													? 'bg-gray-100 dark:bg-gray-800'
@@ -1291,7 +1292,7 @@
 													viewBox="0 0 24 24"
 													stroke-linecap="round"
 													stroke-linejoin="round"
-													class="w-4 h-4"
+													class="{$mobile ? 'size-5' : 'w-4 h-4'}"
 													xmlns="http://www.w3.org/2000/svg"
 												>
 													<path
@@ -1310,7 +1311,7 @@
 												id="continue-response-button"
 												class="{isLastMessage || ($settings?.highContrastMode ?? false)
 													? 'visible'
-													: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
+													: 'invisible group-hover:visible'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
 												on:click={() => {
 													continueResponse();
 												}}
@@ -1322,7 +1323,7 @@
 													viewBox="0 0 24 24"
 													stroke-width="2.3"
 													stroke="currentColor"
-													class="w-4 h-4"
+													class="{$mobile ? 'size-5' : 'w-4 h-4'}"
 												>
 													<path
 														stroke-linecap="round"
@@ -1386,7 +1387,7 @@
 														aria-label={$i18n.t('Regenerate')}
 														class="{isLastMessage
 															? 'visible'
-															: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
+															: 'invisible group-hover:visible'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
 													>
 														<svg
 															xmlns="http://www.w3.org/2000/svg"
@@ -1395,7 +1396,7 @@
 															stroke-width="2.3"
 															aria-hidden="true"
 															stroke="currentColor"
-															class="w-4 h-4"
+															class="{$mobile ? 'size-5' : 'w-4 h-4'}"
 														>
 															<path
 																stroke-linecap="round"
@@ -1413,7 +1414,7 @@
 													aria-label={$i18n.t('Regenerate')}
 													class="{isLastMessage
 														? 'visible'
-														: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition regenerate-response-button"
+														: 'invisible group-hover:visible'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition regenerate-response-button"
 													on:click={() => {
 														showRateComment = false;
 														regenerateResponse(message);
@@ -1438,7 +1439,7 @@
 														stroke-width="2.3"
 														aria-hidden="true"
 														stroke="currentColor"
-														class="w-4 h-4"
+														class="{$mobile ? 'size-5' : 'w-4 h-4'}"
 													>
 														<path
 															stroke-linecap="round"
@@ -1458,7 +1459,7 @@
 												aria-label={action.name}
 												class="{isLastMessage || ($settings?.highContrastMode ?? false)
 													? 'visible'
-													: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
+													: 'invisible group-hover:visible'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
 												on:click={() => {
 													actionMessage(action.id, message);
 												}}
@@ -1488,13 +1489,13 @@
 												aria-label="Fork chat"
 												class="{isLastMessage || ($settings?.highContrastMode ?? false)
 													? 'visible'
-													: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
+													: 'invisible group-hover:visible'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
 												on:click={() => {
 													forkHandler?.(message.id);
 												}}
 											>
 												<svg
-													class="w-4 h-4"
+													class="{$mobile ? 'size-5' : 'w-4 h-4'}"
 													viewBox="0 0 24 24"
 													fill="none"
 													stroke="currentColor"
@@ -1522,7 +1523,7 @@
 													id="delete-response-button"
 													class="{isLastMessage || ($settings?.highContrastMode ?? false)
 														? 'visible'
-														: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition disabled:opacity-50 disabled:hover:bg-transparent"
+														: 'invisible group-hover:visible'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition disabled:opacity-50 disabled:hover:bg-transparent"
 													disabled={!allowDelete}
 													on:click={(e) => {
 														if (!allowDelete) {
@@ -1542,7 +1543,7 @@
 														stroke-width="2"
 														stroke="currentColor"
 														aria-hidden="true"
-														class="w-4 h-4"
+														class="{$mobile ? 'size-5' : 'w-4 h-4'}"
 													>
 														<path
 															stroke-linecap="round"

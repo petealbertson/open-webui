@@ -5,6 +5,7 @@
 	import Tooltip from '$lib/components/common/Tooltip.svelte';
 	import ChevronRight from './icons/ChevronRight.svelte';
 	import Plus from './icons/Plus.svelte';
+	import { mobile } from '$lib/stores';
 
 	const dispatch = createEventDispatcher();
 	type AddHandler = () => void | Promise<void>;
@@ -125,10 +126,10 @@
 
 		{#if collapsible}
 			<Collapsible bind:open className="w-full" buttonClassName="w-full" onChange={setOpen}>
-				<div class="flex items-center justify-between h-6 w-full pl-3.5 pr-1.5 shrink-0">
+				<div class="flex items-center justify-between {mobile ? 'h-11' : 'h-6'} w-full pl-3.5 pr-1.5 shrink-0">
 					<button
 						type="button"
-						class="group flex flex-1 h-full items-center gap-1 text-left text-xs text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400 transition-colors duration-100 {buttonClassName}"
+						class="group flex flex-1 h-full items-center gap-1 text-left {mobile ? 'text-[14px]' : 'text-xs'} text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400 transition-colors duration-100 {buttonClassName}"
 						aria-expanded={open}
 						aria-controls="{id}-content"
 						on:pointerup|stopPropagation
@@ -148,7 +149,7 @@
 					{#if onAdd}
 						<button
 							type="button"
-							class="flex items-center justify-center w-7 h-7 rounded-lg text-gray-300 hover:text-gray-500 dark:text-gray-600 dark:hover:text-gray-400 transition-colors duration-100"
+							class="flex items-center justify-center {mobile ? 'size-10' : 'w-7 h-7'} rounded-lg text-gray-300 hover:text-gray-500 dark:text-gray-600 dark:hover:text-gray-400 transition-colors duration-100"
 							aria-label={onAddLabel}
 							on:pointerup={(e) => {
 								e.stopPropagation();
@@ -159,7 +160,7 @@
 							}}
 						>
 							<Tooltip content={onAddLabel}>
-								<Plus className="size-3.5" />
+								<Plus className="{mobile ? 'size-5' : 'size-3.5'}" />
 							</Tooltip>
 						</button>
 					{/if}

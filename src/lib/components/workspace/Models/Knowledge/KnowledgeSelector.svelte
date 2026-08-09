@@ -127,7 +127,7 @@
 						<Search className="size-3.5" />
 					</div>
 					<input
-						class="w-full text-[13px] py-0.5 outline-hidden bg-transparent"
+						class="input-plain w-full text-[13px] py-0.5 outline-hidden bg-transparent"
 						bind:value={query}
 						on:input={handleSearchInput}
 						placeholder={$i18n.t('Search')}

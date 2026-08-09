@@ -95,7 +95,7 @@
 			<Search className="size-3.5 shrink-0" strokeWidth="2.5" />
 			<input
 				bind:value={folderSearch}
-				class="w-full bg-transparent text-[13px] outline-hidden"
+				class="input-plain w-full bg-transparent text-[13px] outline-hidden"
 				placeholder={$i18n.t('Search folders')}
 				autocomplete="off"
 				on:click|stopPropagation

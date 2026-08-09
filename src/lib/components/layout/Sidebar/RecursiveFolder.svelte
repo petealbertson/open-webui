@@ -737,7 +737,7 @@
 		<div class="w-full group">
 			<div
 				id="folder-{folderId}-button"
-				class="relative w-full py-1 px-1.5 rounded-xl flex items-center gap-1.5 hover:bg-gray-50/40 dark:hover:bg-gray-800/40 transition {$selectedFolder?.id ===
+				class="relative w-full {$mobile ? 'py-3 px-2.5' : 'py-1 px-1.5'} rounded-xl flex items-center gap-1.5 hover:bg-gray-50/40 dark:hover:bg-gray-800/40 transition {$selectedFolder?.id ===
 				folderId
 					? 'bg-gray-100/80 dark:bg-gray-850/50 selected'
 					: ''}"
@@ -775,7 +775,7 @@
 				}}
 			>
 				<button
-					class="text-gray-600 dark:text-gray-400 transition-all p-1 hover:bg-gray-50/40 dark:hover:bg-gray-800/40 rounded-lg"
+					class="text-gray-600 dark:text-gray-400 transition-all {$mobile ? 'p-2' : 'p-1'} hover:bg-gray-50/40 dark:hover:bg-gray-800/40 rounded-lg"
 					on:click={(e) => {
 						e.stopPropagation();
 						e.stopImmediatePropagation();
@@ -785,7 +785,7 @@
 				>
 					{#if folders[folderId]?.meta?.icon}
 						<div class="flex group-hover:hidden transition-all">
-							<Emoji className="size-3.5" shortCode={folders[folderId].meta.icon} />
+							<Emoji className="{$mobile ? 'size-4.5' : 'size-3.5'}" shortCode={folders[folderId].meta.icon} />
 						</div>
 
 						<div class="hidden group-hover:flex transition-all p-[1px]">
@@ -797,7 +797,7 @@
 						</div>
 					{:else}
 						<div class="flex group-hover:hidden transition-all">
-							<FolderIcon className="size-3.5" strokeWidth="1.5" />
+							<FolderIcon className="{$mobile ? 'size-4.5' : 'size-3.5'}" strokeWidth="1.5" />
 						</div>
 
 						<div class="hidden group-hover:flex transition-all p-[1px]">
@@ -838,7 +838,7 @@
 							class="w-full h-full bg-transparent outline-hidden"
 						/>
 					{:else}
-						<div class="min-w-0 truncate">
+						<div class="min-w-0 truncate {$mobile ? 'text-[15px]' : ''}">
 							{folders[folderId].name}
 						</div>
 
@@ -877,7 +877,7 @@
 							onMarkAllRead={markAllReadHandler}
 						>
 							<div
-								class="flex size-5 items-center justify-center self-center dark:hover:text-white transition m-0 touch-auto"
+								class="flex {$mobile ? 'size-9' : 'size-5'} items-center justify-center self-center dark:hover:text-white transition m-0 touch-auto"
 							>
 								<MoreHorizontal className="size-3.5" strokeWidth="2" />
 							</div>

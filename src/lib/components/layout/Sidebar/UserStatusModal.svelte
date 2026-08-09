@@ -126,7 +126,7 @@
 								id="status-message"
 								type="text"
 								bind:value={message}
-								class={`w-full flex-1 text-sm ${($settings?.highContrastMode ?? false) ? highContrastInputClass : 'bg-transparent outline-hidden placeholder:text-gray-300 dark:placeholder:text-gray-700'}`}
+								class={`w-full flex-1 text-sm ${($settings?.highContrastMode ?? false) ? highContrastInputClass : 'class="input-plain bg-transparent outline-hidden placeholder:text-gray-300 dark:placeholder:text-gray-700"'}`}
 								placeholder={$i18n.t("What's on your mind?")}
 								autocomplete="off"
 								required

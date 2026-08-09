@@ -25,6 +25,38 @@ Passionate about open-source AI? [Join our team →](https://careers.openwebui.c
 
 For more information, be sure to check out our [Open WebUI Documentation](https://docs.openwebui.com/).
 
+## Fork Notes ℹ️
+
+> **This is a fork** of [open-webui/open-webui](https://github.com/open-webui/open-webui) maintained by [petealbertson](https://github.com/petealbertson). All upstream features are present; the changes below are what make this fork different.
+
+### What's different
+
+- 📱 **Mobile-first polish** — the driving goal of this fork. Touch targets, rows, icons, and controls were resized for comfortable use on a phone:
+  - Buttons bumped to ~40–44px tap targets (New Chat, message actions, sidebar controls, model selector rows)
+  - Larger chat list rows and message input controls on small screens
+  - Navbar and sidebar sizing reworked for narrow viewports
+- ✍️ **Consistent form inputs** — standardized styling for text inputs, textareas, and selects across the app (visible borders, consistent border radius, unified focus states), including a fix for a Tailwind v4 preflight specificity bug that was stripping input borders.
+- 🔎 **Chat search that actually finds your content** — upstream search on SQLite only matched a compact summary of each chat, missing terms that appear only in the full conversation history. The SQLite search branch now searches `$.history.messages` (matching what the PostgreSQL branch already did), and result snippets are drawn from the full history too.
+- ⌨️ **Browser reload shortcuts restored** — the "Regenerate Response" shortcut was bound to `Cmd+R` by default and hijacked the browser's reload. In this fork that binding is unassigned by default, and `Cmd/Ctrl+R` / `Cmd/Ctrl+Shift+R` are hard-reserved so no app action can ever claim them.
+- 🐳 **Slim frontend-replacement image** — [`Dockerfile.mobile-ui`](./Dockerfile.mobile-ui) reuses the stock Open WebUI image and swaps in this fork's rebuilt frontend, avoiding a full image rebuild for frontend-only changes.
+
+### Deploying
+
+See [How to Install](#how-to-install-) below for upstream instructions. For this fork's frontend-replacement flow:
+
+```bash
+npm ci
+npm run build
+# Build the slim image (reuses ghcr.io/open-webui/open-webui:main)
+docker build -f Dockerfile.mobile-ui -t open-webui-mobile:latest .
+```
+
+Backend changes (Python) deploy by bind-mounting the edited modules into the container (e.g. `-v ./backend/open_webui/models/chats.py:/app/backend/open_webui/models/chats.py`) followed by a container restart.
+
+### Keeping the fork current
+
+This fork's `main` branch is the source of truth. Changes are developed on short-lived branches and merged in via pull request, and upstream Open WebUI releases can be merged into `main` when desired. The fork's changes are intentionally small and mostly confined to `src/app.css`, a few `src/lib/components/**` files, and two backend modules.
+
 ## Key Features of Open WebUI ⭐
 
 - 🚀 **Effortless Setup**: Install seamlessly via pip, uv, Docker, or Kubernetes (kubectl, kustomize, or helm), with `:ollama` and `:cuda` tagged images available for container deployments.

@@ -2,6 +2,7 @@
 	import { decode } from 'html-entities';
 	import { getContext } from 'svelte';
 	import { slide } from 'svelte/transition';
+import { mobile } from '$lib/stores';
 	import { quintOut } from 'svelte/easing';
 
 	import ChevronUp from '$lib/components/icons/ChevronUp.svelte';
@@ -113,7 +114,7 @@
 <div {id} class="w-full">
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<button
-		class="w-fit py-0.5 text-left {compactPreview
+		class="w-fit {$mobile ? 'py-2' : 'py-0.5'} text-left {compactPreview
 			? 'text-xs'
 			: 'text-[0.9375rem]'} text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition cursor-pointer"
 		aria-label={$i18n.t('Toggle details')}
@@ -126,11 +127,11 @@
 			<!-- Status icon -->
 			{#if hasPending}
 				<div>
-					<Spinner className="size-4" />
+					<Spinner className="{$mobile ? 'size-5' : 'size-4'}" />
 				</div>
 			{:else if toolCallCount > 0}
 				<div class="text-emerald-500 dark:text-emerald-400">
-					<CheckCircle className="size-4" strokeWidth="2" />
+					<CheckCircle className="{$mobile ? 'size-5' : 'size-4'}" strokeWidth="2" />
 				</div>
 			{:else}
 				<div class="text-gray-400 dark:text-gray-500">

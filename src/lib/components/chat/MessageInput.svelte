@@ -1964,10 +1964,10 @@
 										<button
 											type="button"
 											id="input-menu-button"
-											class="bg-transparent hover:bg-gray-100 text-gray-700 dark:text-white dark:hover:bg-gray-800 rounded-full size-[1.875rem] flex justify-center items-center outline-hidden focus:outline-hidden shrink-0"
+											class="bg-transparent hover:bg-gray-100 text-gray-700 dark:text-white dark:hover:bg-gray-800 rounded-full {$mobile ? 'size-11' : 'size-[1.875rem]'} flex justify-center items-center outline-hidden focus:outline-hidden shrink-0"
 											aria-label={$i18n.t('More')}
 										>
-											<PlusAlt className="size-5" />
+											<PlusAlt className="{mobile ? 'size-6' : 'size-5'}" />
 										</button>
 									</InputMenu>
 
@@ -2010,7 +2010,7 @@
 												<button
 													type="button"
 													id="integration-menu-button"
-													class="bg-transparent hover:bg-gray-100 text-gray-700 dark:text-white dark:hover:bg-gray-800 rounded-full size-[1.875rem] flex justify-center items-center outline-hidden focus:outline-hidden shrink-0"
+													class="bg-transparent hover:bg-gray-100 text-gray-700 dark:text-white dark:hover:bg-gray-800 rounded-full {$mobile ? 'size-11' : 'size-[1.875rem]'} flex justify-center items-center outline-hidden focus:outline-hidden shrink-0"
 													aria-label={$i18n.t('Integrations')}
 												>
 													<Component className="size-4.5" strokeWidth="1.5" />
@@ -2024,14 +2024,14 @@
 													<button
 														type="button"
 														id="model-valves-button"
-														class="bg-transparent hover:bg-gray-100 text-gray-700 dark:text-white dark:hover:bg-gray-800 rounded-full size-[1.875rem] flex justify-center items-center outline-hidden focus:outline-hidden"
+														class="bg-transparent hover:bg-gray-100 text-gray-700 dark:text-white dark:hover:bg-gray-800 rounded-full {$mobile ? 'size-11' : 'size-[1.875rem]'} flex justify-center items-center outline-hidden focus:outline-hidden"
 														on:click={() => {
 															selectedValvesType = 'function';
 															selectedValvesItemId = selectedModelIds[0]?.split('.')[0];
 															showValvesModal = true;
 														}}
 													>
-														<Knobs className="size-4" strokeWidth="1.5" />
+														<Knobs className="{mobile ? 'size-5' : 'size-4'}" strokeWidth="1.5" />
 													</button>
 												</Tooltip>
 											</div>
@@ -2251,13 +2251,13 @@
 											<button
 												type="button"
 												id="chat-variables-button"
-												class="flex size-[1.875rem] shrink-0 items-center justify-center rounded-full bg-transparent text-gray-500 transition-colors hover:text-gray-800 focus:outline-hidden dark:text-gray-400 dark:hover:text-gray-100"
+												class="flex {$mobile ? 'size-11' : 'size-[1.875rem]'} shrink-0 items-center justify-center rounded-full bg-transparent text-gray-500 transition-colors hover:text-gray-800 focus:outline-hidden dark:text-gray-400 dark:hover:text-gray-100"
 												aria-label={$i18n.t('Chat Variables')}
 												on:click={() => {
 													dispatch('chatVariables');
 												}}
 											>
-												<Knobs className="size-4" strokeWidth="1.5" />
+												<Knobs className="{mobile ? 'size-5' : 'size-4'}" strokeWidth="1.5" />
 											</button>
 										</Tooltip>
 									{/if}
@@ -2267,7 +2267,7 @@
 											<Tooltip content={$i18n.t('Stop')}>
 												<button
 													aria-label={$i18n.t('Stop')}
-													class="bg-white hover:bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-800 transition rounded-full p-[5px]"
+													class="bg-white hover:bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-800 transition rounded-full {$mobile ? 'p-2.5' : 'p-[5px]'}"
 													on:click={() => {
 														stopResponse();
 													}}
@@ -2294,7 +2294,7 @@
 												<Tooltip content={$i18n.t('Dictate')}>
 													<button
 														id="voice-input-button"
-														class=" text-gray-600 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200 transition rounded-full p-1.5 self-center mr-0.5"
+														class=" text-gray-600 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200 transition rounded-full {$mobile ? 'p-2.5' : 'p-1.5'} self-center mr-0.5"
 														type="button"
 														on:click={async () => {
 															try {
@@ -2324,7 +2324,7 @@
 														}}
 														aria-label="Voice Input"
 													>
-														<Mic className="size-[18px]" />
+														<Mic className="{mobile ? 'size-5.5' : 'size-[18px]'}" />
 													</button>
 												</Tooltip>
 											{/if}
@@ -2335,7 +2335,7 @@
 												<!-- {$i18n.t('Call')} -->
 												<Tooltip content={$i18n.t('Voice mode')}>
 													<button
-														class=" bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-black dark:hover:bg-gray-100 transition rounded-full p-[5px] self-center"
+														class=" bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-black dark:hover:bg-gray-100 transition rounded-full {$mobile ? 'p-2.5' : 'p-[5px]'} self-center"
 														type="button"
 														on:click={async () => {
 															if (selectedModels.length > 1) {
@@ -2389,7 +2389,7 @@
 														}}
 														aria-label={$i18n.t('Voice mode')}
 													>
-														<Voice className="size-5" strokeWidth="2.5" />
+														<Voice className="{mobile ? 'size-6' : 'size-5'}" strokeWidth="2.5" />
 													</button>
 												</Tooltip>
 											</div>
@@ -2404,7 +2404,7 @@
 														id="send-message-button"
 														class="{!(prompt === '' && files.length === 0) || uploadPending
 															? 'bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-black dark:hover:bg-gray-100 '
-															: 'text-white bg-gray-200 dark:text-gray-900 dark:bg-gray-700 disabled'} transition rounded-full p-[5px] self-center"
+															: 'text-white bg-gray-200 dark:text-gray-900 dark:bg-gray-700 disabled'} transition rounded-full {$mobile ? 'p-2.5' : 'p-[5px]'} self-center"
 														type="submit"
 														disabled={(prompt === '' && files.length === 0) || uploadPending}
 													>

@@ -1127,7 +1127,7 @@
 				class="sidebar px-1 pt-1.5 pb-1 flex justify-between space-x-1 text-gray-600 dark:text-gray-400 sticky top-0 z-10 -mb-2"
 			>
 				<a
-					class="flex items-center rounded-xl size-8.5 h-full justify-center hover:bg-gray-50 dark:hover:bg-gray-900 transition no-drag-region"
+					class="flex items-center rounded-xl {mobile ? 'size-10' : 'size-8.5'} h-full justify-center hover:bg-gray-50 dark:hover:bg-gray-900 transition no-drag-region"
 					href="/"
 					draggable="false"
 					on:click={newChatHandler}
@@ -1135,7 +1135,7 @@
 					<img
 						crossorigin="anonymous"
 						src="{WEBUI_BASE_URL}/static/favicon.png"
-						class="sidebar-new-chat-icon size-5 rounded-full"
+						class="sidebar-new-chat-icon {mobile ? 'size-6' : 'size-5'} rounded-full"
 						alt=""
 					/>
 				</a>
@@ -1153,7 +1153,7 @@
 					placement="bottom"
 				>
 					<button
-						class="flex size-[30px] justify-center items-center rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900 transition {isWindows
+						class="flex {mobile ? 'size-10' : 'size-[30px]'} justify-center items-center rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900 transition {isWindows
 							? 'cursor-pointer'
 							: 'cursor-[w-resize]'}"
 						on:click={() => {
@@ -1162,7 +1162,7 @@
 						aria-label={$showSidebar ? $i18n.t('Close Sidebar') : $i18n.t('Open Sidebar')}
 					>
 						<div class=" self-center">
-							<Sidebar className="size-4" />
+							<Sidebar className="{mobile ? 'size-5.5' : 'size-4'}" />
 						</div>
 					</button>
 				</Tooltip>
@@ -1188,18 +1188,18 @@
 					<div class="px-1 flex justify-center text-gray-700 dark:text-gray-300">
 						<a
 							id="sidebar-new-chat-button"
-							class="group grow flex items-center space-x-2 rounded-xl px-2 py-1.5 hover:bg-gray-50 dark:hover:bg-gray-900 transition outline-none"
+							class="group grow flex items-center space-x-2 rounded-xl {mobile ? 'px-3.5 py-3' : 'px-2 py-1.5'} hover:bg-gray-50 dark:hover:bg-gray-900 transition outline-none"
 							href="/"
 							draggable="false"
 							on:click={newChatHandler}
 							aria-label={$i18n.t('New Chat')}
 						>
-							<div class="self-center flex size-4 shrink-0 items-center justify-center">
-								<EditPencilIcon className=" size-4" strokeWidth="1.5" />
+							<div class="self-center flex {mobile ? 'size-5.5' : 'size-4'} shrink-0 items-center justify-center">
+								<EditPencilIcon className="{mobile ? 'size-5.5' : 'size-4'}" strokeWidth="1.5" />
 							</div>
 
 							<div class="flex flex-1 self-center translate-y-[0.5px]">
-								<div class=" self-center text-[13px] leading-5">{$i18n.t('New Chat')}</div>
+								<div class=" self-center {mobile ? 'text-[15px] leading-5' : 'text-[13px] leading-5'}">{$i18n.t('New Chat')}</div>
 							</div>
 
 							<HotkeyHint name="newChat" className=" group-hover:visible invisible" />
@@ -1209,19 +1209,19 @@
 					<div class="px-1 flex justify-center text-gray-700 dark:text-gray-300">
 						<button
 							id="sidebar-search-button"
-							class="group grow flex items-center space-x-2 rounded-xl px-2 py-1.5 hover:bg-gray-50 dark:hover:bg-gray-900 transition outline-none"
+							class="group grow flex items-center space-x-2 rounded-xl {mobile ? 'px-3.5 py-3' : 'px-2 py-1.5'} hover:bg-gray-50 dark:hover:bg-gray-900 transition outline-none"
 							on:click={() => {
 								showSearch.set(true);
 							}}
 							draggable="false"
 							aria-label={$i18n.t('Search')}
 						>
-							<div class="self-center flex size-4 shrink-0 items-center justify-center">
-								<SearchIcon strokeWidth="1.5" className="size-4" />
+							<div class="self-center flex {mobile ? 'size-5.5' : 'size-4'} shrink-0 items-center justify-center">
+								<SearchIcon strokeWidth="1.5" className="{mobile ? 'size-5.5' : 'size-4'}" />
 							</div>
 
 							<div class="flex flex-1 self-center translate-y-[0.5px]">
-								<div class=" self-center text-[13px] leading-5">{$i18n.t('Search')}</div>
+								<div class=" self-center {mobile ? 'text-[15px] leading-5' : 'text-[13px] leading-5'}">{$i18n.t('Search')}</div>
 							</div>
 							<HotkeyHint name="search" className=" group-hover:visible invisible" />
 						</button>
@@ -1237,7 +1237,7 @@
 								>
 									<a
 										id="sidebar-{itemId}-button"
-										class="grow flex items-center space-x-2 rounded-xl px-2 py-1.5 transition {itemId ===
+										class="grow flex items-center space-x-2 rounded-xl {mobile ? 'px-3.5 py-3' : 'px-2 py-1.5'} transition {itemId ===
 										activeMenuItemId
 											? ($settings?.highContrastMode ?? false)
 												? 'bg-black/[0.035] dark:bg-white/[0.06]'
@@ -1248,22 +1248,22 @@
 										draggable="false"
 										aria-label={$i18n.t(meta.label)}
 									>
-										<div class="self-center flex size-4 shrink-0 items-center justify-center">
+										<div class="self-center flex {mobile ? 'size-5.5' : 'size-4'} shrink-0 items-center justify-center">
 											{#if itemId === 'notes'}
-												<NotesIcon className="size-4" strokeWidth="1.5" />
+												<NotesIcon className="{mobile ? 'size-5.5' : 'size-4'}" strokeWidth="1.5" />
 											{:else if itemId === 'workspace'}
-												<WorkspaceIcon className="size-4" strokeWidth="1.5" />
+												<WorkspaceIcon className="{mobile ? 'size-5.5' : 'size-4'}" strokeWidth="1.5" />
 											{:else if itemId === 'automations'}
-												<ClockIcon className="size-4" strokeWidth="1.5" />
+												<ClockIcon className="{mobile ? 'size-5.5' : 'size-4'}" strokeWidth="1.5" />
 											{:else if itemId === 'calendar'}
-												<CalendarIcon className="size-4" strokeWidth="1.5" />
+												<CalendarIcon className="{mobile ? 'size-5.5' : 'size-4'}" strokeWidth="1.5" />
 											{:else if itemId === 'playground'}
-												<CodeIcon className="size-4" strokeWidth="1.5" />
+												<CodeIcon className="{mobile ? 'size-5.5' : 'size-4'}" strokeWidth="1.5" />
 											{/if}
 										</div>
 
 										<div class="flex self-center translate-y-[0.5px]">
-											<div class=" self-center text-[13px] leading-5">{$i18n.t(meta.label)}</div>
+											<div class=" self-center {mobile ? 'text-[15px] leading-5' : 'text-[13px] leading-5'}">{$i18n.t(meta.label)}</div>
 										</div>
 									</a>
 								</div>
@@ -1468,11 +1468,11 @@
 							<Tooltip content={$i18n.t('More')}>
 								<button
 									type="button"
-									class="flex items-center justify-center w-7 h-7 rounded-lg text-gray-300 hover:text-gray-500 dark:text-gray-600 dark:hover:text-gray-400 transition-colors duration-100"
+									class="flex items-center justify-center {mobile ? 'size-10' : 'w-7 h-7'} rounded-lg text-gray-300 hover:text-gray-500 dark:text-gray-600 dark:hover:text-gray-400 transition-colors duration-100"
 									aria-label={$i18n.t('More')}
 									on:pointerup|stopPropagation
 								>
-									<MoreHorizontalIcon className="size-3.5" strokeWidth="2" />
+									<MoreHorizontalIcon className="{mobile ? 'size-5' : 'size-3.5'}" strokeWidth="2" />
 								</button>
 							</Tooltip>
 
@@ -1589,7 +1589,7 @@
 								{#each $chats as chat, idx (`chat-${chat?.id ?? idx}`)}
 									{#if idx === 0 || (idx > 0 && chat.time_range !== $chats[idx - 1].time_range)}
 										<div
-											class="w-full pl-2.5 text-xs text-gray-500 dark:text-gray-500 font-normal {idx ===
+											class="w-full pl-2.5 {mobile ? 'text-[13px]' : 'text-xs'} text-gray-500 dark:text-gray-500 font-normal {idx ===
 											0
 												? ''
 												: 'pt-4'} pb-1"
@@ -1685,13 +1685,13 @@
 						>
 							<button
 								type="button"
-								class=" flex items-center rounded-xl py-1.5 px-1.5 w-full hover:bg-gray-50 dark:hover:bg-gray-900 transition"
+								class=" flex items-center rounded-xl {mobile ? 'py-3 px-3' : 'py-1.5 px-1.5'} w-full hover:bg-gray-50 dark:hover:bg-gray-900 transition"
 								aria-label={$i18n.t('User menu')}
 							>
 								<div class=" self-center mr-3 relative flex-shrink-0">
 									<img
 										src={`${WEBUI_API_BASE_URL}/users/${$user?.id}/profile/image`}
-										class="size-5.5 object-cover rounded-full"
+										class="{mobile ? 'size-7' : 'size-5.5'} object-cover rounded-full"
 										alt={$i18n.t('Open User Profile Menu')}
 										aria-label={$i18n.t('Open User Profile Menu')}
 									/>
@@ -1708,7 +1708,7 @@
 										</div>
 									{/if}
 								</div>
-								<div class=" self-center font-normal truncate">{$user?.name}</div>
+								<div class=" self-center font-normal truncate {mobile ? 'text-[15px]' : ''}">{$user?.name}</div>
 							</button>
 						</UserMenu>
 					{/if}

@@ -130,7 +130,7 @@
 			<input
 				type="text"
 				id="floating-message-input"
-				class="ml-5 bg-transparent outline-hidden w-full flex-1 text-sm"
+				class="input-plain ml-5 bg-transparent outline-hidden w-full flex-1 text-sm"
 				placeholder={$i18n.t('Ask a question')}
 				aria-label={$i18n.t('Ask a question')}
 				bind:value={floatingInputValue}

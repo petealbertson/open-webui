@@ -94,10 +94,22 @@ export const DEFAULT_KEYBINDINGS: KeybindingsMap = {
 	[Shortcut.CLOSE_MODAL]: 'Escape',
 	[Shortcut.FOCUS_INPUT]: 'Shift+Escape',
 	[Shortcut.GENERATE_MESSAGE_PAIR]: 'Cmd+Shift+Enter',
-	[Shortcut.REGENERATE_RESPONSE]: 'Cmd+R',
+	[Shortcut.REGENERATE_RESPONSE]: '',
 	[Shortcut.COPY_LAST_CODE_BLOCK]: 'Cmd+Shift+;',
 	[Shortcut.COPY_LAST_RESPONSE]: 'Cmd+Shift+C'
 };
+
+/**
+ * Chords that must never be claimed by app shortcuts because browsers
+ * reserve them (reload: Cmd/Ctrl+R and Cmd/Ctrl+Shift+R, and the devtools
+ * combos on Mac). If a binding resolves to one of these, it is treated as
+ * unassigned so the browser keeps the key.
+ */
+const BROWSER_RESERVED_CHORDS = new Set(['Cmd+R', 'Cmd+Shift+R', 'Ctrl+R', 'Ctrl+Shift+R']);
+
+export function isBrowserReservedChord(chord: string): boolean {
+	return BROWSER_RESERVED_CHORDS.has(chord);
+}
 
 export const keybindings = writable<KeybindingsMap>({ ...DEFAULT_KEYBINDINGS });
 
@@ -112,7 +124,8 @@ export function loadKeybindings(saved: Partial<Record<string, string>> | undefin
 		const updated = { ...current };
 		for (const id of CONFIGURABLE_SHORTCUTS) {
 			if (typeof saved[id] === 'string') {
-				updated[id] = saved[id]!;
+				// Never restore a binding to a browser-reserved chord (reload, etc.).
+				updated[id] = isBrowserReservedChord(saved[id]!) ? '' : saved[id]!;
 			}
 		}
 		return updated;
@@ -199,6 +212,9 @@ function buildReverseLookup(bindings: KeybindingsMap): Map<string, ConfigurableS
 export function matchKeybinding(event: KeyboardEvent): ConfigurableShortcut | null {
 	const chord = eventToChord(event);
 	if (!chord) return null;
+	// Never let the app claim a browser-reserved chord (e.g. Cmd/Ctrl+R and
+	// Cmd/Ctrl+Shift+R which browsers use for reload).
+	if (isBrowserReservedChord(chord)) return null;
 	return buildReverseLookup(get(keybindings)).get(chord) ?? null;
 }
 

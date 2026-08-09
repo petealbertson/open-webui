@@ -307,6 +307,100 @@ input[type='number'] {
 	-moz-appearance: textfield; /* Firefox */
 }
 
+
+/* ============================================================
+   Standardized form inputs
+   Every text-like <input>, <textarea> and <select> gets a visible
+   border, soft background fill, rounded corners and a blue focus
+   ring so form fields read as interactive instead of blending into
+   static text. Mirrors the established `inputClass` treatment used
+   across admin/chat settings.
+   ============================================================ */
+@layer base {
+	input:not([type]),
+	input[type='text'],
+	input[type='email'],
+	input[type='url'],
+	input[type='password'],
+	input[type='search'],
+	input[type='tel'],
+	input[type='number'],
+	input[type='date'],
+	input[type='datetime-local'],
+	input[type='month'],
+	input[type='week'],
+	input[type='time'],
+	textarea,
+	select {
+		border-radius: 0.5rem;
+		border-width: 1px;
+		border-style: solid;
+		border-color: theme(--color-gray-200);
+		background-color: theme(--color-gray-50);
+		padding-inline: 0.5rem;
+		transition:
+			border-color 120ms ease,
+			background-color 120ms ease,
+			box-shadow 120ms ease;
+	}
+
+	:is(input:not([type]), input[type='text'], input[type='email'], input[type='url'], input[type='password'], input[type='search'], input[type='tel'], input[type='number'], input[type='date'], input[type='datetime-local'], input[type='month'], input[type='week'], input[type='time'], textarea, select):focus {
+		outline: none;
+		border-color: theme(--color-blue-500);
+		box-shadow: 0 0 0 3px theme(--color-blue-500 / 20%);
+	}
+
+	.dark input:not([type]),
+	.dark input[type='text'],
+	.dark input[type='email'],
+	.dark input[type='url'],
+	.dark input[type='password'],
+	.dark input[type='search'],
+	.dark input[type='tel'],
+	.dark input[type='number'],
+	.dark input[type='date'],
+	.dark input[type='datetime-local'],
+	.dark input[type='month'],
+	.dark input[type='week'],
+	.dark input[type='time'],
+	.dark textarea,
+	.dark select {
+		border-color: theme(--color-gray-700);
+		background-color: theme(--color-gray-900);
+	}
+
+	.dark :is(input:not([type]), input[type='text'], input[type='email'], input[type='url'], input[type='password'], input[type='search'], input[type='tel'], input[type='number'], input[type='date'], input[type='datetime-local'], input[type='month'], input[type='week'], input[type='time'], textarea, select):focus {
+		border-color: theme(--color-blue-500);
+		box-shadow: 0 0 0 3px theme(--color-blue-500 / 25%);
+	}
+}
+
+/* Fields inside an already-framed container, inline-edit/title fields and
+   other intentional border-less inputs keep their existing look. */
+@layer utilities {
+	:where(input, textarea, select):where(
+		.input-plain,
+		#chat-search input,
+		#sidebar-search input,
+		#message-input-container input,
+		#message-input-container textarea,
+		[id^='chat-title-input-'],
+		[id^='message-edit-'],
+		[id^='folder-'] input,
+		[id^='search-chat-title-input-'],
+		#query-editor,
+		.nb-edit-textarea
+	) {
+		border-width: 0;
+		border-color: transparent;
+		background-color: transparent;
+		padding-inline: 0;
+		box-shadow: none;
+		border-radius: 0;
+	}
+}
+
+
 .katex-display {
 	@apply overflow-y-hidden overflow-x-auto max-w-full;
 }
@@ -917,4 +1011,27 @@ html.high-contrast:not(.dark) .shimmer {
 	background: none;
 	color: var(--color-gray-700);
 	-webkit-text-fill-color: var(--color-gray-700);
+}
+
+/* ============================================================
+   Mobile touch-target improvements
+   (matches the `mobile` store breakpoint: window.innerWidth < 768)
+   ============================================================ */
+@media (max-width: 767px) {
+	/* Chat list rows: taller, more padding, larger title text */
+	#sidebar-chat-item {
+		min-height: calc(52px * var(--app-text-scale, 1));
+		padding-inline: calc(14px * var(--app-text-scale, 1));
+		padding-block: calc(13px * var(--app-text-scale, 1));
+	}
+
+	#sidebar-chat-item div[dir='auto'] {
+		height: calc(26px * var(--app-text-scale, 1));
+		line-height: calc(26px * var(--app-text-scale, 1));
+		font-size: calc(15px * var(--app-text-scale, 1));
+	}
+
+	#sidebar-chat-item input {
+		min-height: calc(24px * var(--app-text-scale, 1));
+	}
 }

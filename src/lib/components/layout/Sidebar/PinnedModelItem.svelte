@@ -7,6 +7,7 @@
 
 	import Tooltip from '$lib/components/common/Tooltip.svelte';
 	import PinSlash from './icons/PinSlash.svelte';
+	import { mobile } from '$lib/stores';
 
 	export let model = null;
 	export let shiftKey = false;
@@ -29,7 +30,7 @@
 		}}
 	>
 		<a
-			class="grow flex items-center space-x-2 rounded-xl px-2 py-[7px] group-hover:bg-gray-100 dark:group-hover:bg-gray-900 transition"
+			class="grow flex items-center space-x-2 rounded-xl {$mobile ? 'px-3.5 py-3' : 'px-2 py-[7px]'} group-hover:bg-gray-100 dark:group-hover:bg-gray-900 transition"
 			href="/?model={model?.id}"
 			on:click={onClick}
 			draggable="false"
@@ -37,7 +38,7 @@
 			<div class="self-center shrink-0">
 				<img
 					src={`${WEBUI_API_BASE_URL}/models/model/profile/image?id=${model.id}&lang=${$i18n.language}`}
-					class=" size-4 rounded-full"
+					class=" {$mobile ? 'size-5.5' : 'size-4'} rounded-full"
 					alt="logo"
 					on:error={(e) => {
 						e.currentTarget.src = '/favicon.png';
@@ -46,7 +47,7 @@
 			</div>
 
 			<div class="flex self-center translate-y-[0.5px]">
-				<div class=" self-center text-[13px] leading-5 line-clamp-1">
+				<div class=" self-center {$mobile ? 'text-[15px] leading-6' : 'text-[13px] leading-5'} line-clamp-1">
 					{model?.name ?? model.id}
 				</div>
 			</div>

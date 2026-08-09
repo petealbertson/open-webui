@@ -506,12 +506,12 @@
 
 	<div class="space-y-1">
 		<div class="flex h-8 flex-1 items-center w-full gap-2">
-			<div class="flex min-w-0 flex-1 items-center">
+			<div class="flex min-w-0 flex-1 items-center rounded-lg border border-gray-200 bg-gray-50/60 dark:border-gray-700 dark:bg-gray-900">
 				<div class=" self-center ml-1 mr-3">
 					<Search className="size-3.5" />
 				</div>
 				<input
-					class=" w-full text-sm py-1 rounded-r-xl outline-hidden bg-transparent"
+					class="input-plain w-full text-sm py-1 rounded-r-xl outline-hidden bg-transparent"
 					bind:value={query}
 					aria-label={$i18n.t('Search Models')}
 					placeholder={$i18n.t('Search Models')}

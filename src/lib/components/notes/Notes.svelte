@@ -438,12 +438,12 @@
 
 		<div class="space-y-1">
 			<div class="flex h-8 flex-1 items-center w-full gap-2">
-				<div class="flex min-w-0 flex-1 items-center">
+				<div class="flex min-w-0 flex-1 items-center rounded-lg border border-gray-200 bg-gray-50/60 dark:border-gray-700 dark:bg-gray-900">
 					<div class=" self-center ml-1 mr-3">
 						<Search className="size-3.5" />
 					</div>
 					<input
-						class=" w-full text-sm py-1 rounded-r-xl outline-hidden bg-transparent"
+						class="input-plain w-full text-sm py-1 rounded-r-xl outline-hidden bg-transparent"
 						bind:value={query}
 						on:input={handleSearchInput}
 						placeholder={$i18n.t('Search Notes')}
@@ -533,7 +533,7 @@
 								<div
 									class="flex w-full items-center gap-2 px-2 pb-2 text-xs text-gray-400 dark:text-gray-600"
 								>
-									<div class="flex min-w-0 flex-1 items-center">
+									<div class="flex min-w-0 flex-1 items-center rounded-lg border border-gray-200 bg-gray-50/60 dark:border-gray-700 dark:bg-gray-900">
 										<button
 											class="flex min-w-0 items-center gap-1 py-0.5 text-left"
 											type="button"

@@ -23,7 +23,8 @@
 		temporaryChatEnabled,
 		settings,
 		config,
-		showSettings
+		showSettings,
+		mobile
 	} from '$lib/stores';
 	import { toast } from 'svelte-sonner';
 	import { capitalizeFirstLetter, sanitizeResponseContent, splitStream } from '$lib/utils';
@@ -771,13 +772,13 @@
 			>
 				<slot>
 					{#if searchEnabled}
-						<div class="my-0.5 flex ml-2 mr-0.5 h-[1.6875rem] shrink-0 items-center gap-2">
+						<div class="my-0.5 flex ml-2 mr-0.5 {$mobile ? 'h-11' : 'h-[1.6875rem]'} shrink-0 items-center gap-2">
 							<Search className=" size-3.5 shrink-0" strokeWidth="2" />
 
 							<input
 								id="model-search-input"
 								bind:value={searchValue}
-								class="w-full bg-transparent text-[13px] font-normal outline-hidden placeholder:text-gray-400 dark:placeholder:text-gray-500"
+								class="input-plain w-full bg-transparent text-[13px] font-normal outline-hidden placeholder:text-gray-400 dark:placeholder:text-gray-500"
 								placeholder={searchPlaceholder}
 								autocomplete="off"
 								aria-label={$i18n.t('Search In Models')}
@@ -832,7 +833,7 @@
 											align="end"
 											items={modelFilterItems}
 											triggerClass="relative flex h-[1.375rem] max-w-32 items-center gap-0.5 rounded-xl bg-transparent px-1.5 text-[11px] font-normal text-gray-400 transition-colors duration-100 hover:bg-gray-50/40 hover:text-gray-600 dark:text-gray-500 dark:hover:bg-gray-800/40 dark:hover:text-gray-300"
-											itemClass="flex h-[1.6875rem] w-full cursor-pointer items-center gap-2 rounded-xl bg-transparent px-2 text-[13px] capitalize hover:bg-gray-50/40 hover:text-gray-900 dark:hover:bg-gray-800/40 dark:hover:text-gray-100"
+											itemClass="flex {$mobile ? 'h-11' : 'h-[1.6875rem]'} w-full cursor-pointer items-center gap-2 rounded-xl bg-transparent px-2 text-[13px] capitalize hover:bg-gray-50/40 hover:text-gray-900 dark:hover:bg-gray-800/40 dark:hover:text-gray-100"
 											contentClass="min-w-36 model-selector-child-menu"
 											onChange={setModelFilter}
 										/>
@@ -918,7 +919,7 @@
 								placement="top-start"
 							>
 								<button
-									class="flex h-[1.6875rem] w-full cursor-pointer select-none items-center rounded-xl px-2 text-[13px] font-normal text-gray-700 outline-hidden transition-colors duration-75 hover:bg-gray-50/40 dark:text-gray-100 dark:hover:bg-gray-800/40"
+									class="flex {$mobile ? 'h-11' : 'h-[1.6875rem]'} w-full cursor-pointer select-none items-center rounded-xl px-2 text-[13px] font-normal text-gray-700 outline-hidden transition-colors duration-75 hover:bg-gray-50/40 dark:text-gray-100 dark:hover:bg-gray-800/40"
 									on:click={() => {
 										pullModelHandler();
 									}}
@@ -934,7 +935,7 @@
 
 						{#each selectionOnly ? [] : Object.keys($MODEL_DOWNLOAD_POOL) as model}
 							<div
-								class="flex min-h-[1.6875rem] w-full cursor-pointer select-none justify-between rounded-xl px-2 text-[13px] font-normal text-gray-700 outline-hidden transition-colors duration-75 dark:text-gray-100"
+								class="flex min-{$mobile ? 'h-11' : 'h-[1.6875rem]'} w-full cursor-pointer select-none justify-between rounded-xl px-2 text-[13px] font-normal text-gray-700 outline-hidden transition-colors duration-75 dark:text-gray-100"
 							>
 								<div class="flex">
 									<div class="mr-2.5 translate-y-0.5">

@@ -364,7 +364,7 @@ class Pipe:
 			<div class="min-w-0 flex-1">
 				<Tooltip content={$i18n.t('e.g. My Filter')} placement="top-start">
 					<input
-						class="w-full bg-transparent text-sm outline-hidden"
+						class="input-plain w-full bg-transparent text-sm outline-hidden"
 						type="text"
 						placeholder={$i18n.t('Function Name')}
 						aria-label={$i18n.t('Function Name')}
@@ -385,7 +385,7 @@ class Pipe:
 							placement="top-start"
 						>
 							<input
-								class="w-full bg-transparent font-mono outline-hidden disabled:text-gray-500"
+								class="input-plain w-full bg-transparent font-mono outline-hidden disabled:text-gray-500"
 								type="text"
 								placeholder={$i18n.t('Function ID')}
 								aria-label={$i18n.t('Function ID')}
@@ -402,7 +402,7 @@ class Pipe:
 						placement="top-start"
 					>
 						<input
-							class="w-full bg-transparent outline-hidden"
+							class="input-plain w-full bg-transparent outline-hidden"
 							type="text"
 							placeholder={$i18n.t('Function Description')}
 							aria-label={$i18n.t('Function Description')}

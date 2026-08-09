@@ -503,7 +503,7 @@
 	{#if confirmEdit}
 		<div
 			id="sidebar-chat-item"
-			class=" w-full flex justify-between rounded-xl px-2 py-[6px] {id === $chatId || confirmEdit
+			class=" w-full flex justify-between rounded-xl {$mobile ? 'px-3.5 py-3' : 'px-2 py-[6px]'} {id === $chatId || confirmEdit
 				? ($settings?.highContrastMode ?? false)
 					? 'bg-black/[0.035] dark:bg-white/[0.06] selected'
 					: 'bg-black/[0.035] dark:bg-white/[0.045] selected'
@@ -548,7 +548,7 @@
 		>
 			<LinkPreview.Trigger
 				id="sidebar-chat-item"
-				class=" w-full flex justify-between rounded-xl px-2 py-[6px] {id === $chatId || confirmEdit
+				class=" w-full flex justify-between rounded-xl {$mobile ? 'px-3.5 py-3' : 'px-2 py-[6px]'} {id === $chatId || confirmEdit
 					? ($settings?.highContrastMode ?? false)
 						? 'bg-black/[0.035] dark:bg-white/[0.06] selected'
 						: 'bg-black/[0.035] dark:bg-white/[0.045] selected'
@@ -590,7 +590,7 @@
 						<img
 							src="/api/v1/users/{ownerUserId}/profile/image"
 							alt=""
-							class="size-3.5 rounded-full shrink-0 object-cover mr-1.5"
+							class="{$mobile ? 'size-5' : 'size-3.5'} rounded-full shrink-0 object-cover mr-1.5"
 						/>
 					</Tooltip>
 				{/if}
@@ -610,7 +610,7 @@
 					{/if}
 					<div
 						dir="auto"
-						class="text-left self-center overflow-hidden w-full h-[20px] truncate {unread
+						class="text-left self-center overflow-hidden w-full {$mobile ? 'h-[26px] text-[15px] leading-6' : 'h-[20px]'} truncate {unread
 							? 'font-normal text-gray-800 dark:text-gray-200'
 							: ''} {showInlineActions && !readonly ? 'pr-12' : ''}"
 					>
@@ -620,7 +620,7 @@
 
 				<!-- Time ago indicator -->
 				{#if (updatedAt ?? createdAt) && !showInlineActions}
-					<div class="shrink-0 self-center text-[10px] text-gray-400 dark:text-gray-500 pl-2">
+					<div class="shrink-0 self-center {$mobile ? 'text-[11px]' : 'text-[10px]'} text-gray-400 dark:text-gray-500 pl-2">
 						{formatTimeAgo((updatedAt ?? createdAt) as number)}
 					</div>
 				{/if}
@@ -718,12 +718,12 @@
 					>
 						<button
 							aria-label="Chat Menu"
-							class="flex size-5 items-center justify-center self-center dark:hover:text-white transition m-0"
+							class="flex {$mobile ? 'size-9' : 'size-5'} items-center justify-center self-center dark:hover:text-white transition m-0"
 							on:click={() => {
 								dispatch('select');
 							}}
 						>
-							<MoreHorizontalIcon className="size-3.5" strokeWidth="2" />
+							<MoreHorizontalIcon className="{mobile ? 'size-5.5' : 'size-3.5'}" strokeWidth="2" />
 						</button>
 					</ChatMenu>
 

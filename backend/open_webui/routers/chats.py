@@ -156,9 +156,17 @@ def chat_search_snippet(chat: dict, search_text: str, max_length: int = 200) -> 
     if not search_text:
         return None
 
+    # The full conversation lives in history.messages (with branches); the
+    # 'messages' array holds a compact summary of the current thread. Search
+    # both so the snippet highlights matches found anywhere in the chat.
     messages = chat.get('messages', [])
+    history = chat.get('history', {}).get('messages', {})
     if isinstance(messages, dict):
         messages = messages.values()
+    if isinstance(history, dict):
+        messages = [*messages, *history.values()]
+    elif isinstance(history, list):
+        messages = [*messages, *history]
 
     for message in messages:
         if not isinstance(message, dict):
