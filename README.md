@@ -36,7 +36,7 @@ For more information, be sure to check out our [Open WebUI Documentation](https:
   - Larger chat list rows and message input controls on small screens
   - Navbar and sidebar sizing reworked for narrow viewports
 - ✍️ **Consistent form inputs** — standardized styling for text inputs, textareas, and selects across the app (visible borders, consistent border radius, unified focus states), including a fix for a Tailwind v4 preflight specificity bug that was stripping input borders.
-- 🔎 **Chat search that actually finds your content** — upstream search on SQLite only matched a compact summary of each chat, missing terms that appear only in the full conversation history. The SQLite search branch now searches `$.history.messages` (matching what the PostgreSQL branch already did), and result snippets are drawn from the full history too.
+- 🔎 **Chat search that actually finds your content** — search on SQLite matches the full conversation history (`$.history.messages`) and result snippets are drawn from the full history, not just the compact thread summary. (This landed upstream in v0.11.1, so this fork's `main` inherits it directly.)
 - ⌨️ **Browser reload shortcuts restored** — the "Regenerate Response" shortcut was bound to `Cmd+R` by default and hijacked the browser's reload. In this fork that binding is unassigned by default, and `Cmd/Ctrl+R` / `Cmd/Ctrl+Shift+R` are hard-reserved so no app action can ever claim them.
 - 🐳 **Slim frontend-replacement image** — [`Dockerfile.mobile-ui`](./Dockerfile.mobile-ui) reuses the stock Open WebUI image and swaps in this fork's rebuilt frontend, avoiding a full image rebuild for frontend-only changes.
 
@@ -55,7 +55,7 @@ Backend changes (Python) deploy by bind-mounting the edited modules into the con
 
 ### Keeping the fork current
 
-This fork's `main` branch is the source of truth. Changes are developed on short-lived branches and merged in via pull request, and upstream Open WebUI releases can be merged into `main` when desired. The fork's changes are intentionally small and mostly confined to `src/app.css`, a few `src/lib/components/**` files, and two backend modules.
+This fork's `main` branch is the source of truth. Changes are developed on short-lived branches and merged in via pull request, and upstream Open WebUI releases can be merged into `main` when desired. The fork is currently based on upstream **v0.11.1**, and the mobile polish is intentionally small and mostly confined to `src/app.css` and a few `src/lib/components/**` files. The fork-specific backend changes (chat search over full history) were adopted upstream in v0.11.1, so the backend tracks upstream exactly.
 
 ## Key Features of Open WebUI ⭐
 

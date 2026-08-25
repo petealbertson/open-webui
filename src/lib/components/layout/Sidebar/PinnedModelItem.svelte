@@ -31,6 +31,7 @@
 	>
 		<a
 			class="grow flex items-center space-x-2 rounded-xl {$mobile ? 'px-3.5 py-3' : 'px-2 py-[7px]'} group-hover:bg-gray-100 dark:group-hover:bg-gray-900 transition"
+
 			href="/?model={model?.id}"
 			on:click={onClick}
 			draggable="false"
@@ -41,13 +42,17 @@
 					class=" {$mobile ? 'size-5.5' : 'size-4'} rounded-full"
 					alt="logo"
 					on:error={(e) => {
+						// LICENSE covers this Open WebUI fallback logo.
+						// Do not alter, remove, obscure, or replace it except as LICENSE permits:
+						// https://docs.openwebui.com/license.
 						e.currentTarget.src = '/favicon.png';
 					}}
 				/>
 			</div>
 
 			<div class="flex self-center translate-y-[0.5px]">
-				<div class=" self-center {$mobile ? 'text-[15px] leading-6' : 'text-[13px] leading-5'} line-clamp-1">
+				<div class=" self-center {$mobile ? 'text-[15px] leading-6' : 'text-[0.8125rem] leading-5'} line-clamp-1">
+
 					{model?.name ?? model.id}
 				</div>
 			</div>

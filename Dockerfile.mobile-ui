@@ -1,5 +1,5 @@
-# Slim image: reuse the running Open WebUI image, swap in our rebuilt frontend.
-FROM ghcr.io/open-webui/open-webui:main
+# Slim image: reuse the stock Open WebUI v0.11.1 image, swap in our rebuilt frontend.
+FROM ghcr.io/open-webui/open-webui:v0.11.1
 
 # Remove stale hashed assets from the base image, then copy the fresh build.
 RUN rm -rf /app/build
