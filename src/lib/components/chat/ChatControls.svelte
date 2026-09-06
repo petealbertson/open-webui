@@ -384,6 +384,7 @@
 							</div>
 							<button
 								class="{$mobile ? 'p-2.5' : 'p-1'} rounded-lg text-gray-500 dark:text-gray-400"
+
 								on:click={() => showControls.set(false)}
 								aria-label={$i18n.t('Close')}
 							>
@@ -394,6 +395,7 @@
 									stroke="currentColor"
 									stroke-width="1.5"
 									class="{$mobile ? 'size-5' : 'size-4'}"
+
 								>
 									<path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
 								</svg>

@@ -147,7 +147,8 @@
 					: 'bg-black/[0.035] dark:bg-white/[0.045] selected'
 				: $mobile
 					? ''
-					: ' hover:bg-gray-50 dark:hover:bg-gray-900 group-hover:bg-gray-50 dark:group-hover:bg-gray-900'
+					: ' hover:bg-gray-100 dark:hover:bg-gray-900 group-hover:bg-gray-50 dark:group-hover:bg-gray-900'
+
 	}  whitespace-nowrap text-ellipsis transition`;
 
 	const selectChatHandler = (event?: MouseEvent) => {
@@ -602,6 +603,7 @@
 		<div
 			id="sidebar-chat-item"
 			class=" w-full flex justify-between rounded-xl {$mobile ? 'px-3.5 py-3' : 'px-2 py-1.5'} {id === $chatId || confirmEdit
+
 				? ($settings?.highContrastMode ?? false)
 					? 'bg-black/[0.035] dark:bg-white/[0.06] selected'
 					: 'bg-black/[0.035] dark:bg-white/[0.045] selected'
@@ -609,7 +611,7 @@
 					? ($settings?.highContrastMode ?? false)
 						? 'bg-black/[0.035] dark:bg-white/[0.055] selected'
 						: 'bg-black/[0.035] dark:bg-white/[0.045] selected'
-					: 'hover:bg-gray-50 dark:hover:bg-gray-900 group-hover:bg-gray-50 dark:group-hover:bg-gray-900'}  whitespace-nowrap text-ellipsis relative transition {generating
+					: 'hover:bg-gray-100 dark:hover:bg-gray-900 group-hover:bg-gray-100 dark:group-hover:bg-gray-900'}  whitespace-nowrap text-ellipsis relative transition {generating
 				? 'cursor-not-allowed'
 				: ''}"
 		>
@@ -770,6 +772,7 @@
 							type="button"
 							aria-label="Chat Menu"
 							class="flex {$mobile ? 'size-9' : 'size-5'} items-center justify-center self-center dark:hover:text-white transition m-0"
+
 						>
 							<MoreHorizontalIcon className="{$mobile ? 'size-5.5' : 'size-3.5'}" strokeWidth="2" />
 						</button>

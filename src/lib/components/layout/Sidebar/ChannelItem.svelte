@@ -85,6 +85,7 @@
 		? 'bg-gray-100 dark:bg-gray-900 selected'
 		: ''} {channel?.type === 'dm' ? ($mobile ? 'px-2.5 py-3' : 'px-1 py-[3px]') : ($mobile ? 'p-3' : 'p-1')}  {channel?.unread_count > 0
 
+
 		? 'font-normal dark:text-white text-black'
 		: ' dark:text-gray-400 text-gray-600'} cursor-pointer select-none"
 >
@@ -166,6 +167,7 @@
 					</span>
 				{:else}
 					<span class="shrink-0 line-clamp-1 {$mobile ? 'text-[15px]' : ''}">
+
 
 						{channel?.users
 							?.filter((u) => u.id !== $user?.id)

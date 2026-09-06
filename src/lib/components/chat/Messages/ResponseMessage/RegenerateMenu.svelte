@@ -33,7 +33,8 @@
 				<input
 					type="text"
 					id="floating-message-input"
-					class="input-plain bg-transparent outline-hidden w-full flex-1 text-[13px]"
+					class="input-plain bg-transparent outline-hidden w-full flex-1 text-[0.8125rem]"
+
 
 					placeholder={$i18n.t('Suggest a change')}
 					bind:value={inputValue}

@@ -151,6 +151,7 @@
 								<input
 									class="input-plain w-full bg-transparent text-[0.8125rem] leading-5 text-gray-700 outline-hidden placeholder:text-gray-300 dark:text-gray-200 dark:placeholder:text-gray-700"
 
+
 									placeholder={$i18n.t('Title')}
 									aria-label={$i18n.t('Title')}
 									bind:value={prompt.title[0]}
@@ -160,6 +161,7 @@
 							<Tooltip content={$i18n.t('e.g. about the Roman Empire')} placement="top-start">
 								<input
 									class="input-plain w-full bg-transparent text-[0.8125rem] leading-5 text-gray-500 outline-hidden placeholder:text-gray-300 dark:text-gray-500 dark:placeholder:text-gray-700"
+
 
 									placeholder={$i18n.t('Subtitle')}
 									aria-label={$i18n.t('Subtitle')}

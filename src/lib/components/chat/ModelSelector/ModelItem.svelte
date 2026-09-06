@@ -54,11 +54,20 @@
 	role="option"
 	aria-selected={isSelected}
 	aria-label={$i18n.t('Select {{modelName}} model', { modelName: item.label })}
-	class="group/item flex {$mobile ? 'h-11' : 'h-8'} w-full cursor-pointer select-none items-center rounded-xl {$mobile ? 'px-2.5' : 'px-2'} text-left {$mobile ? 'text-[15px]' : 'text-[13px]'} font-normal text-gray-700 outline-hidden transition-colors duration-75 hover:bg-gray-50/40 dark:text-gray-100 dark:hover:bg-gray-800/40 {index ===
+	class="focus-ring group/item flex {$mobile ? 'h-11' : 'h-8'} w-full cursor-pointer select-none items-center rounded-xl {$mobile ? 'px-2.5' : 'px-2'} text-left text-[0.8125rem] font-normal text-gray-700 outline-hidden transition-colors duration-75 dark:text-gray-100 {($settings?.highContrastMode ??
+	false)
+		? 'hover:bg-gray-200 dark:hover:bg-gray-800'
+		: 'hover:bg-gray-50/40 dark:hover:bg-gray-800/40'} {index === selectedModelIdx &&
+	!compareEnabled
+		? ($settings?.highContrastMode ?? false)
+			? 'bg-gray-200 dark:bg-gray-800'
+			: 'bg-gray-50/70 dark:bg-gray-800/60'
+		: ''} {isSelected
+		? ($settings?.highContrastMode ?? false)
+			? 'bg-gray-200 dark:bg-gray-800'
+			: 'bg-gray-50/70 dark:bg-gray-800/60'
+		: ''}"
 
-		selectedModelIdx && !compareEnabled
-		? 'bg-gray-50/70 dark:bg-gray-800/60'
-		: ''} {isSelected ? 'bg-gray-50/70 dark:bg-gray-800/60' : ''}"
 	data-arrow-selected={index === selectedModelIdx}
 	data-value={item.value}
 	on:click={() => {

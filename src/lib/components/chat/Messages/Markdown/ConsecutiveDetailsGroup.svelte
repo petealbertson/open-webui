@@ -184,6 +184,7 @@
 			role="button"
 			tabindex="0"
 			class="flex-1 min-w-0 {$mobile ? 'py-2' : 'py-0.5'} text-left {compactPreview
+
 				? 'text-xs'
 				: 'text-[0.9375rem]'} text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition cursor-pointer"
 			aria-label={$i18n.t('Toggle details')}
@@ -219,6 +220,7 @@
 				{:else}
 					<div class="text-gray-400 dark:text-gray-500">
 						<Sparkles className="{$mobile ? 'size-4' : 'size-3.5'}" />
+
 					</div>
 				{/if}
 

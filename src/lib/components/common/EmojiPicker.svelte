@@ -171,7 +171,8 @@
 			<div class="mb-0.5 px-3 pt-2 pb-1.5">
 				<input
 					type="text"
-					class="input-plain w-full text-[13px] bg-transparent outline-hidden"
+					class="input-plain w-full text-[0.8125rem] bg-transparent outline-hidden"
+
 
 					placeholder={$i18n.t('Search all emojis')}
 					bind:value={search}

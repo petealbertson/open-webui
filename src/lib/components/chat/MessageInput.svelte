@@ -1858,7 +1858,10 @@
 							id="message-input-container"
 							class="flex-1 flex flex-col relative w-full shadow-lg rounded-3xl border {$temporaryChatEnabled
 								? 'border-dashed border-gray-100 dark:border-gray-800 hover:border-gray-200 focus-within:border-gray-200 hover:dark:border-gray-700 focus-within:dark:border-gray-700'
-								: ' border-gray-100/30 dark:border-gray-850/30 hover:border-gray-200 focus-within:border-gray-100 hover:dark:border-gray-800 focus-within:dark:border-gray-800'}  transition px-0.5 bg-white/5 dark:bg-gray-500/5 backdrop-blur-sm dark:text-gray-100"
+								: ' border-gray-100/30 dark:border-gray-850/30 hover:border-gray-200 focus-within:border-gray-100 hover:dark:border-gray-800 focus-within:dark:border-gray-800'} {($settings?.highContrastMode ??
+							false)
+								? 'focus-within:outline focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-blue-500 [&_.ProseMirror:focus-visible]:outline-none!'
+								: ''}  transition px-0.5 bg-white/5 dark:bg-gray-500/5 backdrop-blur-sm dark:text-gray-100"
 							dir={$settings?.chatDirection ?? 'auto'}
 						>
 							{#if atSelectedModel !== undefined}
@@ -2550,6 +2553,7 @@
 												<button
 													aria-label={$i18n.t('Stop')}
 													class="bg-white hover:bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-800 transition rounded-full {$mobile ? 'p-2.5' : 'p-[0.3125rem]'}"
+
 													on:click={() => {
 														stopResponse();
 													}}
@@ -2607,6 +2611,7 @@
 														aria-label="Voice Input"
 													>
 														<Mic className="{$mobile ? 'size-5.5' : 'size-[1.125rem]'}" />
+
 													</button>
 												</Tooltip>
 											{/if}
@@ -2618,6 +2623,7 @@
 												<Tooltip content={$i18n.t('Voice mode')}>
 													<button
 														class=" bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-black dark:hover:bg-gray-100 transition rounded-full {$mobile ? 'p-2.5' : 'p-[0.3125rem]'} self-center"
+
 														type="button"
 														on:click={async () => {
 															if (selectedModels.length > 1) {
@@ -2687,6 +2693,7 @@
 														class="{!(prompt === '' && files.length === 0) || uploadPending
 															? 'bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-black dark:hover:bg-gray-100 '
 															: 'text-white bg-gray-200 dark:text-gray-900 dark:bg-gray-700 disabled'} transition rounded-full {$mobile ? 'p-2.5' : 'p-[0.3125rem]'} self-center"
+
 														type="submit"
 														disabled={(prompt === '' && files.length === 0) || uploadPending}
 													>

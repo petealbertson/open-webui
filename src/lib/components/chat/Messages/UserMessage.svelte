@@ -202,7 +202,12 @@
 			{/if}
 
 			{#if edit === true}
-				<div class=" w-full bg-gray-50 dark:bg-gray-800 rounded-3xl px-4 py-3 mb-2">
+				<div
+					class=" w-full bg-gray-50 dark:bg-gray-800 rounded-3xl px-4 py-3 mb-2 {($settings?.highContrastMode ??
+					false)
+						? 'focus-within:outline focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-blue-500'
+						: ''}"
+				>
 					{#if (editedFiles ?? []).length > 0}
 						<div class="flex items-center flex-wrap gap-2 -mx-2 mb-1">
 							{#each editedFiles as file, fileIdx}
@@ -273,7 +278,8 @@
 						<textarea
 							id="message-edit-{message.id}"
 							bind:this={messageEditTextAreaElement}
-							class="input-plain  bg-transparent outline-hidden w-full resize-none text-[0.9375rem]"
+							class="input-plain  bg-transparent outline-hidden focus-visible:outline-none! w-full resize-none text-[0.9375rem]"
+
 							bind:value={editedContent}
 							on:input={(e) => {
 								const messagesContainer = document.getElementById('messages-container');
@@ -532,6 +538,7 @@
 								class="{($settings?.highContrastMode ?? false)
 									? ''
 									: 'hover-reveal'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition edit-user-message-button"
+
 								aria-label={$i18n.t('Edit')}
 								on:click={() => {
 									editMessageHandler();
@@ -561,6 +568,7 @@
 								class="{($settings?.highContrastMode ?? false)
 									? ''
 									: 'hover-reveal'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
+
 								aria-label={$i18n.t('Copy')}
 								on:click={() => {
 									copyToClipboard(message.content);
@@ -592,6 +600,7 @@
 									class="{($settings?.highContrastMode ?? false)
 										? ''
 										: 'hover-reveal'} {$mobile ? 'p-2' : 'p-1'} rounded-sm dark:hover:text-white hover:text-black transition"
+
 									on:click={(e) => {
 										if (e.shiftKey) {
 											deleteMessageHandler();

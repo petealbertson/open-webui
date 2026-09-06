@@ -185,6 +185,7 @@
 				<textarea
 					class="input-plain h-full w-full resize-none bg-transparent px-3 py-2 font-mono text-[11px] leading-relaxed outline-hidden placeholder:text-gray-400 dark:placeholder:text-gray-600"
 
+
 					bind:value={content}
 					on:input={handleContentInput}
 					placeholder={$i18n.t('Enter skill instructions in markdown...')}

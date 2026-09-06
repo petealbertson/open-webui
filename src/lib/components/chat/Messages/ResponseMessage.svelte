@@ -732,7 +732,12 @@
 						{/if}
 
 						{#if edit === true}
-							<div class="w-full bg-gray-50 dark:bg-gray-800 rounded-3xl px-3 py-3 my-2">
+							<div
+								class="w-full bg-gray-50 dark:bg-gray-800 rounded-3xl px-3 py-3 my-2 {($settings?.highContrastMode ??
+								false)
+									? 'focus-within:outline focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-blue-500'
+									: ''}"
+							>
 								{#if editedOutput}
 									<!-- Structured output editor (visual + JSON toggle) -->
 									<OutputEditView
@@ -746,7 +751,8 @@
 									<textarea
 										id="message-edit-{message.id}"
 										bind:this={editTextAreaElement}
-										class="input-plain  bg-transparent outline-hidden w-full resize-none text-[0.9375rem]"
+										class="input-plain  bg-transparent outline-hidden focus-visible:outline-none! w-full resize-none text-[0.9375rem]"
+
 										bind:value={editedContent}
 										on:input={(e) => {
 											const messagesContainer = document.getElementById('messages-container');
@@ -1035,6 +1041,7 @@
 													? 'visible'
 													: 'hover-reveal'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
 
+
 												on:click={() => {
 													editMessageHandler();
 												}}
@@ -1066,6 +1073,7 @@
 											? 'visible'
 											: 'hover-reveal'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition copy-response-button"
 
+
 										on:click={() => {
 											copyToClipboard(visibleResponseContent);
 										}}
@@ -1096,6 +1104,7 @@
 												? 'visible'
 												: 'hover-reveal'} rounded-lg {$mobile ? 'px-2.5 py-2 text-sm' : 'px-2 py-1.5 text-xs'} text-gray-500 transition hover:bg-black/5 hover:text-black dark:hover:bg-white/5 dark:hover:text-white"
 
+
 											on:click={() => {
 												onInsertToNote?.(visibleResponseContent);
 											}}
@@ -1113,6 +1122,7 @@
 											class="{isLastMessage || ($settings?.highContrastMode ?? false)
 												? 'visible'
 												: 'hover-reveal'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
+
 
 											on:click={() => {
 												if (!loadingSpeech) {
@@ -1215,6 +1225,7 @@
 												? 'visible'
 												: 'hover-reveal'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition whitespace-pre-wrap"
 
+
 											on:click={() => {
 												console.log(message);
 											}}
@@ -1247,6 +1258,7 @@
 												class="{isLastMessage || ($settings?.highContrastMode ?? false)
 													? 'visible'
 													: 'hover-reveal'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg {(
+
 
 													message?.annotation?.rating ?? ''
 												).toString() === '1'
@@ -1286,6 +1298,7 @@
 												class="{isLastMessage || ($settings?.highContrastMode ?? false)
 													? 'visible'
 													: 'hover-reveal'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg {(
+
 
 													message?.annotation?.rating ?? ''
 												).toString() === '-1'
@@ -1329,6 +1342,7 @@
 												class="{isLastMessage || ($settings?.highContrastMode ?? false)
 													? 'visible'
 													: 'hover-reveal'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
+
 
 												on:click={() => {
 													continueResponse();
@@ -1407,6 +1421,7 @@
 															? 'visible'
 															: 'hover-reveal'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
 
+
 													>
 														<svg
 															xmlns="http://www.w3.org/2000/svg"
@@ -1434,6 +1449,7 @@
 													class="{isLastMessage || ($settings?.highContrastMode ?? false)
 														? 'visible'
 														: 'hover-reveal'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition regenerate-response-button"
+
 
 													on:click={() => {
 														showRateComment = false;
@@ -1481,6 +1497,7 @@
 													? 'visible'
 													: 'hover-reveal'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
 
+
 												on:click={() => {
 													actionMessage(action.id, message);
 												}}
@@ -1511,6 +1528,7 @@
 												class="{isLastMessage || ($settings?.highContrastMode ?? false)
 													? 'visible'
 													: 'hover-reveal'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
+
 
 												on:click={() => {
 													forkHandler?.(message.id);
@@ -1546,6 +1564,7 @@
 													class="{isLastMessage || ($settings?.highContrastMode ?? false)
 														? 'visible'
 														: 'hover-reveal'} {$mobile ? 'p-2.5' : 'p-1.5'} hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition disabled:opacity-50 disabled:hover:bg-transparent"
+
 
 													disabled={!allowDelete}
 													on:click={(e) => {

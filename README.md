@@ -10,9 +10,7 @@
 [![Discord](https://img.shields.io/badge/Discord-Open_WebUI-blue?logo=discord&logoColor=white)](https://discord.gg/5rJgQTnV4s)
 [![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/open-webui)
 
-![Open WebUI Banner](./banner.png)
-
-**Open WebUI is an [extensible](https://docs.openwebui.com/features/extensibility/plugin), feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline.** It supports various LLM runners like **Ollama** and **OpenAI-compatible APIs**, with **built-in inference engine** for RAG, making it a **powerful AI deployment solution**.
+Open WebUI is **a home for AI**, a self-hosted AI platform that's **[extensible](https://docs.openwebui.com/features/extensibility/plugin/)**, **[feature-rich](https://docs.openwebui.com/features/)**, user-friendly, and built to run **[entirely offline](https://openwebui.com/sovereign-ai)**. With support for **Ollama** and **OpenAI-compatible APIs**, it gives you a powerful, provider-agnostic interface for both local and cloud-based models.
 
 Passionate about open-source AI? [Join our team →](https://careers.openwebui.com/)
 
@@ -20,8 +18,6 @@ Passionate about open-source AI? [Join our team →](https://careers.openwebui.c
 
 > [!TIP]  
 > **Looking for an [Enterprise Plan](https://docs.openwebui.com/enterprise)?** – **[Speak with Our Sales Team Today!](https://docs.openwebui.com/enterprise)**
->
-> Get **enhanced capabilities**, including **custom theming and branding**, **Service Level Agreement (SLA) support**, **Long-Term Support (LTS) versions**, and **more!**
 
 For more information, be sure to check out our [Open WebUI Documentation](https://docs.openwebui.com/).
 
@@ -47,15 +43,15 @@ See [How to Install](#how-to-install-) below for upstream instructions. For this
 ```bash
 npm ci
 npm run build
-# Build the slim image (reuses ghcr.io/open-webui/open-webui:main)
-docker build -f Dockerfile.mobile-ui -t open-webui-mobile:latest .
+# Build the slim image (pinned upstream v0.11.3 backend)
+docker build -f Dockerfile.mobile-ui -t open-webui-mobile:0.11.3 .
 ```
 
-Backend changes (Python) deploy by bind-mounting the edited modules into the container (e.g. `-v ./backend/open_webui/models/chats.py:/app/backend/open_webui/models/chats.py`) followed by a container restart.
+Deploy the resulting image with the persistent `open-webui` data volume and existing runtime configuration. Do not bind-mount `build` or individual Python modules: rebuilding replaces the build directory, leaving a running container attached to stale assets. The backend matches upstream v0.11.3 exactly. See `docs/LOCAL_DEPLOYMENT.md` for this VM’s deployment and rollback notes.
 
 ### Keeping the fork current
 
-This fork's `main` branch is the source of truth. Changes are developed on short-lived branches and merged in via pull request, and upstream Open WebUI releases can be merged into `main` when desired. The fork is currently based on upstream **v0.11.1**, and the mobile polish is intentionally small and mostly confined to `src/app.css` and a few `src/lib/components/**` files. The fork-specific backend changes (chat search over full history) were adopted upstream in v0.11.1, so the backend tracks upstream exactly.
+This fork's `main` branch is the source of truth. Upstream releases are fetched read-only and merged locally; commits are pushed only to `petealbertson/open-webui`. Never push to upstream or create upstream issues or pull requests. The fork is currently based on upstream **v0.11.3**, and the mobile polish is intentionally small and mostly confined to `src/app.css` and a few `src/lib/components/**` files. The fork-specific backend changes (chat search over full history) were adopted upstream in v0.11.1, so the backend tracks upstream exactly.
 
 ## Key Features of Open WebUI ⭐
 

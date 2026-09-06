@@ -32,6 +32,7 @@
 		<a
 			class="grow flex items-center space-x-2 rounded-xl {$mobile ? 'px-3.5 py-3' : 'px-2 py-[7px]'} group-hover:bg-gray-100 dark:group-hover:bg-gray-900 transition"
 
+
 			href="/?model={model?.id}"
 			on:click={onClick}
 			draggable="false"
@@ -52,6 +53,7 @@
 
 			<div class="flex self-center translate-y-[0.5px]">
 				<div class=" self-center {$mobile ? 'text-[15px] leading-6' : 'text-[0.8125rem] leading-5'} line-clamp-1">
+
 
 					{model?.name ?? model.id}
 				</div>

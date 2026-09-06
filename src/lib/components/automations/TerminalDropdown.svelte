@@ -106,7 +106,8 @@
 							type="text"
 							bind:value={terminalCwd}
 							placeholder="/home/user/project"
-							class="input-plain w-full bg-transparent outline-hidden text-[13px] py-1 placeholder:text-gray-400 dark:placeholder:text-gray-600"
+							class="input-plain w-full bg-transparent outline-hidden text-[0.8125rem] py-1 placeholder:text-gray-400 dark:placeholder:text-gray-600"
+
 
 							on:click={(e) => e.stopPropagation()}
 							on:input={onChange}

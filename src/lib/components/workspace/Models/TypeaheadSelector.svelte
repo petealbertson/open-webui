@@ -86,7 +86,8 @@
 							bind:this={inputElement}
 							bind:value
 							id={`${id}-input`}
-							class="input-plain w-full bg-transparent py-0.5 text-[13px] outline-hidden"
+							class="input-plain w-full bg-transparent py-0.5 text-[0.8125rem] outline-hidden"
+
 
 							type="text"
 							{placeholder}

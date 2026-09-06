@@ -508,6 +508,7 @@
 								{#each toolIds as toolId}
 									<button
 										class="relative flex w-full justify-between gap-2 items-center {$mobile ? 'h-11' : 'h-[1.6875rem]'} px-2 text-[0.8125rem] font-normal cursor-pointer rounded-xl hover:bg-gray-50/40 dark:hover:bg-gray-800/40"
+
 										aria-pressed={(tools?.[toolId]?.authenticated ?? true)
 											? selectedToolIds.includes(toolId)
 											: undefined}
@@ -532,7 +533,8 @@
 											</div>
 										</div>
 
-										{#if (tools?.[toolId]?.authenticated ?? true) && toolId.startsWith('server:mcp:')}
+										{#if tools?.[toolId]?.authenticated === true && toolId.startsWith('server:mcp:')}
+
 											<div class="shrink-0">
 												<Tooltip content={$i18n.t('Disconnect OAuth')}>
 													<button
@@ -626,6 +628,7 @@
 								{#each skillIds as skillId}
 									<button
 										class="relative flex w-full justify-between gap-2 items-center {$mobile ? 'h-11' : 'h-[1.6875rem]'} px-2 text-[0.8125rem] font-normal cursor-pointer rounded-xl hover:bg-gray-50/40 dark:hover:bg-gray-800/40"
+
 										aria-pressed={selectedSkillIds.includes(skillId)}
 										on:click={async () => {
 											await toggleSkill(skillId);
